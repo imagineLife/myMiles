@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: LlrE7aAUOI5E8K8PId4y9SDsRtGPtn4nt9gMHWW3zqEsLvAQeXG78C+MBSHEjFf4+FFnNZADdiR2QRBYypu+8brC7IVaW8/x3GQ3iPGngJjRlm+XHCuPwQcRV4g5Zh9QL0B6TCf5Q3OjVB3axjYxU0flMpiczZG+Nk9bONub3hMv+WDZ1LAl+OPbmmDqHPdFEl718aPG1hwsyTPnfoStjzFbjjVVoWD+pjhuR8u5PkEyM/BTWgtfr4KzniASovNXtHPTVT8gtXC3CSUNCNcWdMLR5oIEi/Xcf/NwuKOv67ki2fMAMzFBCd2uBG63SBGb1p1A1ewI0diY3AgA+/lDGyRm4b12l5Crm3Pibpin3+oQaV8Hxghut914dM1ewy55qShZHeMCJL+m1jvudgFwAFvFk2iqXgsqnnxAnx3jvWpkSG4VhOrsC5EV3+wH+8tX7lwaeuTvTtbywgqo9iuxtgArxrWiwsMPOikRO0pO2Z09HFILpLW6BuqSrRC5IwPw/K29tGSVvqDFtqa7o8Dc2eCE7dYa9de2tojxWhyWNMU6VuLrFRuVgaYN53DXRqCmDcI6gseIwiapGs0AbWOb7UecdYW3WWSfy+Ym3KQI9cvuJT9JvypUoxD0rf8gM+zF8kseMuSU5c/zqECJL0SmTv+TCE8Sigk4ZiVhLWqL+AU=
+  app: tranquil-sierra-12911
+  on:
+    repo: imagineLife/myMiles
