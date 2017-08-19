@@ -1,0 +1,23 @@
+{
+  "name": "mymiles",
+  "version": "1.0.0",
+  "description": "logging app for tracking miles-driven",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imagineLife/myMiles.git"
+  },
+  "author": "imagineLife",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imagineLife/myMiles/issues"
+  },
+  "homepage": "https://github.com/imagineLife/myMiles#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
