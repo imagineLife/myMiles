@@ -10,6 +10,7 @@ const {PORT, DATABASE_URL} = require('./config');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
