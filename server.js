@@ -10,7 +10,7 @@ const {Trip} = require('./models');
 const app = express();
 
 app.use(bodyParser.json());
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
 app.get('/trips', (req, res) => {
   Trip
