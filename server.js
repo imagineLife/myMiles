@@ -5,12 +5,28 @@ const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
-
-// const {Trips} = require('./models');
+const {Trip} = require('./models');
 
 const app = express();
+
 app.use(bodyParser.json());
-app.use(express.static('public'));
+// app.use(express.static('public'));
+
+app.get('/trips', (req, res) => {
+  Trip
+    .find()
+    .exec()
+    .then(trips => {
+      console.log('****TripData\n',
+        trips+'\n',
+        '*****')
+      res.json(trips.map(trip => trip.apiRepr()));
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
+});
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
