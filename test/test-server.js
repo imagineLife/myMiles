@@ -12,6 +12,16 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
+// generate an object represnting a BlogPost.
+// can be used to generate seed data for db
+// or request.body data
+function generateTripData() {
+  return {
+    milesTraveled: faker.helpers.randomNumber(),
+    date: faker.date.past()
+  }
+}
+
 describe('Trips API resources page \n', () => {
 
 	before(function() {
