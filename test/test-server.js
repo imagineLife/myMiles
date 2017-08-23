@@ -2,13 +2,26 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server.js');
 
+const {Trip} = require('../models');
+const {app, runServer, closeServer} = require('../server');
+const {TEST_DATABASE_URL} = require('../config');
+
 const should = chai.should();
-const app = server.app;
+// const app = server.app;
 
 chai.use(chaiHttp);
 
-describe('testing index page', () => {
-	it('shows up', (done) => {
+describe('Trip API resources', () => {
+
+	before(function() {
+		return runServer(TEST_DATABASE_URL);
+	});
+
+	after(function() {
+		return closeServer();
+	})
+
+	it('index page should show up', (done) => {
 		chai.request(app)
 		.get('/')
 		.end((err, resp) => {
@@ -17,4 +30,5 @@ describe('testing index page', () => {
 			done();
 		})
 	})
+
 });
