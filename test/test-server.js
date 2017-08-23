@@ -12,20 +12,53 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-// generate an object represnting a BlogPost.
+// used to put randomish documents in db
+// so we have data to work with and assert about.
+// we use the Faker library to automatically
+// generate placeholder values for author, title, content
+// and then we insert that data into mongo
+function seedTripData() {
+  console.info('seeding Trip data');
+  const seedData = [];
+
+  for (let i=1; i<=10; i++) {
+    seedData.push(generateTripData());
+  }
+  // this will return a promise
+  return Trip.insertMany(seedData);
+}
+
+// generate an object represnting a Trip.
 // can be used to generate seed data for db
 // or request.body data
 function generateTripData() {
   return {
-    milesTraveled: faker.helpers.randomNumber(),
+    milesTraveled: faker.helpers.replaceSymbolWithNumber('#'),
     date: faker.date.past()
   }
+}
+
+// this function deletes the entire database.
+// we'll call it in an `afterEach` block below
+// to ensure  ata from one test does not stick
+// around for next one
+function tearDownDb() {
+    console.warn('Deleting database');
+    return mongoose.connection.dropDatabase();
 }
 
 describe('Trips API resources page \n', () => {
 
 	before(function() {
 		return runServer(TEST_DATABASE_URL);
+	});
+
+	beforeEach(function() {
+		return seedTripData();
+	});
+
+	afterEach(function() {
+		return tearDownDb();
 	});
 
 	after(function() {
