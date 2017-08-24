@@ -18,9 +18,11 @@ function generateTableHTML(data){
 
 	for(let i=0; i<data.length; i++){
 		const currentData = data[i];
+		let parsedDate = currentData.date.slice(0, 10);
+
 		const rowHTML = (
 			`<tr>
-	            <td>${currentData.date}</td>
+	            <td>${parsedDate}</td>
 	            <td>${currentData.milesTraveled}</td>
 	          </tr>`
 	          );
