@@ -4,15 +4,16 @@ function getResFromAPI() {
 	const infoSettings = {
       url: getTripURI,  
       dataType: 'json',
-      success: generateTableRows,
+      success: generateTableHTML,
       error: function(err) { console.log(err) },
     };
 
     $.ajax(infoSettings);
 }
 
-function generateTableRows(data){
+function generateTableHTML(data){
 	let rowsHTML = '';
+	let totalMilesTraveled = 0;
 
 
 	for(let i=0; i<data.length; i++){
@@ -25,14 +26,16 @@ function generateTableRows(data){
 	          );
 
 		rowsHTML = rowsHTML + rowHTML;
+		totalMilesTraveled = totalMilesTraveled + currentData.milesTraveled;
 	}
 
-	console.log(rowsHTML);
-	displayTable($('.trip-table-body'), rowsHTML);
+	displayTable($('.trip-table-body'), rowsHTML, $('.trip-table-total-miles'), totalMilesTraveled);
 }
 
-function displayTable(tBodyElem, rowsHTML){
-	
+function displayTable(tBodyElem, rowsHTML, tTotalElem, totMiles){
+	tBodyElem.append(rowsHTML);
+	// console.log(tTotalElem);
+	tTotalElem.text(totMiles);
 }
 
 function doEverything(){
