@@ -28,6 +28,11 @@ function generateTableRows(data){
 	}
 
 	console.log(rowsHTML);
+	displayTable($('.trip-table-body'), rowsHTML);
+}
+
+function displayTable(tBodyElem, rowsHTML){
+	
 }
 
 function doEverything(){
