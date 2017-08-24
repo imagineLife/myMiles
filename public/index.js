@@ -1,15 +1,14 @@
-const getTripURI = `https://localhost:8080/trips`;
+const getTripURI = `/trips`;
 
 function getResFromAPI() {
 	const infoSettings = {
       url: getTripURI,  
       dataType: 'json',
-      success: callback,
-      error: function(err) { alert(err); },
+      success: displayAPISearchData,
+      error: function(err) { console.log(err) },
     };
 
     $.ajax(infoSettings);
-    return data;
 }
 
 function displayAPISearchData(data){
@@ -20,6 +19,6 @@ function doEverything(){
 	//get request to '/trips'
 	//output results into table rows
 	getResFromAPI();
-	displayAPISearchData();
 }
+
 $(doEverything);
