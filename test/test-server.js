@@ -84,12 +84,11 @@ describe('Trips API resources page \n', () => {
 				  res = _res;
 				  res.should.have.status(200);
 				  // otherwise our db seeding didn't work
-				  res.body.should.have.length.of.at.least(1);
+				  res.body.should.have.lengthOf.at.least(1);
 				  return Trip.count();
 				})
 				.then(function(count) {
-					// res.body.should.have.length.of(count);
-					res.body.length.should.equal(count);
+					res.body.should.have.lengthOf(count);
 				});
     	});
     });
