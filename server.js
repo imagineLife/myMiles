@@ -25,6 +25,31 @@ app.get('/trips', (req, res) => {
     });
 });
 
+app.post('/trips', (req, res) => {
+  const requiredFields = ['milesTraveled', 'date'];
+  for (let i=0; i<requiredFields.length; i++) {
+    const field = requiredFields[i];
+    if (!(field in req.body)) {
+      const message = `Missing \`${field}\` in request body`
+      console.error(message);
+      return res.status(400).send(message);
+    }
+  }
+
+  BlogPost
+    .create({
+      title: req.body.title,
+      content: req.body.content,
+      author: req.body.author
+    })
+    .then(blogPost => res.status(201).json(blogPost.apiRepr()))
+    .catch(err => {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong'});
+    });
+
+});
+
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
 });
