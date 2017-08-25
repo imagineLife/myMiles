@@ -11,6 +11,8 @@ const {TEST_DATABASE_URL} = require('../config');
 const should = chai.should();
 
 chai.use(chaiHttp);
+chai.use(require('chai-datetime'));
+
 
 // used to put randomish documents in db
 // so we have data to work with and assert about.
@@ -33,7 +35,7 @@ function seedTripData() {
 // or request.body data
 function generateTripData() {
   return {
-    milesTraveled: faker.helpers.replaceSymbolWithNumber('#'),
+    milesTraveled: parseInt(faker.helpers.replaceSymbolWithNumber('#'),10),
     date: faker.date.past()
   }
 }
@@ -92,6 +94,43 @@ describe('Trips API resources page \n', () => {
 				});
     	});
     });
+
+	// describe('POST endpoint', function() {
+	// 	// strategy: make a POST request with data,
+	// 	// then prove that the trip we get back has
+	// 	// right keys, and that `id` is there (which means
+	// 	// the data was inserted into db)
+	// 	it('should add a new trip', function() {
+
+	// 	  const newTrip = generateTripData();
+	// 	  console.log(new Date('Mon Nov 07 2016 01:58:51 GMT-0500 (EST)'));
+	// 	  console.log(newTrip.date);
+	// 	  return chai.request(app)
+	// 	    .post('/trips')
+	// 	    .send(newTrip)
+	// 	    .then(function(res) {
+	// 	      res.should.have.status(201);
+	// 	      res.should.be.json;
+	// 	      res.body.should.be.a('object');
+	// 	      res.body.should.include.keys(
+	// 	        'milesTraveled', 'date');
+	// 	      // console.log('\n***RES-BODY-DATE\n',
+	// 	      // 	res.body,
+	// 	      // 	'*****DATE\n');
+	// 	      // const dateStr = res.body.date;
+	// 	      res.body.date.should.equal(newTrip.date.toString());
+	// 	      // cause Mongo should have created id on insertion
+	// 	      res.body.id.should.not.be.null;
+	// 	      res.body.milesTraveled.should.equal(newTrip.milesTraveled);
+	// 	      return Trip.findById(res.body.id);
+	// 	    })
+	// 	    .then(function(trip) {
+	// 	      const representedTrip = trip.apiRepr();
+	// 	      representedTrip.date.should.equal(newTrip.date);
+	// 	      representedTrip.milesTraveled.should.equal(newTrip.milesTraveled);
+	// 	    });
+	// 	});
+	// });
 
 });
 
