@@ -124,8 +124,6 @@ describe('Trips API resources page \n', () => {
 		      res.body.should.be.a('object');
 		      res.body.should.include.keys(
 		        'milesTraveled', 'date');
-		      // console.log(typeof(res.body.date));
-		      // console.log(typeof(newTrip.date));
 		      normalizeResDate(res.body.date).should.equal(normalizeDbDate(newTrip.date));
 		      // cause Mongo should have created id on insertion
 		      res.body.id.should.not.be.null;
@@ -134,7 +132,7 @@ describe('Trips API resources page \n', () => {
 		    })
 		    .then(function(trip) {
 		      const representedTrip = trip.apiRepr();
-		      // representedTrip.date.should.equal(newTrip.date);
+		      normalizeResDate(representedTrip.date).should.equal(normalizeResDate(newTrip.date));
 		      representedTrip.milesTraveled.should.equal(newTrip.milesTraveled);
 		    });
 		});
