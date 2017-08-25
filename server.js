@@ -25,29 +25,29 @@ app.get('/trips', (req, res) => {
     });
 });
 
-// app.post('/trips', (req, res) => {
-//   const requiredFields = ['milesTraveled', 'date'];
-//   for (let i=0; i<requiredFields.length; i++) {
-//     const field = requiredFields[i];
-//     if (!(field in req.body)) {
-//       const message = `Missing \`${field}\` in request body`
-//       console.error(message);
-//       return res.status(400).send(message);
-//     }
-//   }
+app.post('/trips', (req, res) => {
+  const requiredFields = ['milesTraveled', 'date'];
+  for (let i=0; i<requiredFields.length; i++) {
+    const field = requiredFields[i];
+    if (!(field in req.body)) {
+      const message = `Missing \`${field}\` in request body`
+      console.error(message);
+      return res.status(400).send(message);
+    }
+  }
 
-//   Trip
-//     .create({
-//       milesTraveled: req.body.milesTraveled,
-//       date: req.body.date
-//     })
-//     .then(trip => res.status(201).json(trip.apiRepr()))
-//     .catch(err => {
-//         console.error(err);
-//         res.status(500).json({error: 'Something went wrong'});
-//     });
+  Trip
+    .create({
+      milesTraveled: req.body.milesTraveled,
+      date: req.body.date
+    })
+    .then(trip => res.status(201).json(trip.apiRepr()))
+    .catch(err => {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong'});
+    });
 
-// });
+});
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
