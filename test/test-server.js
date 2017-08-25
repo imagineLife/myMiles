@@ -138,5 +138,73 @@ describe('Trips API resources page \n', () => {
 		});
 	});
 
+  describe('PUT endpoint', function() {
+
+    // strategy:
+    //  1. Get an existing Trip from db
+    //  2. Make a PUT request to update that Trip
+    //  3. Prove Trip returned by request contains data we sent
+    //  4. Prove Trip in db is correctly updated
+    it('should update fields you send over', function() {
+      const updateData = {
+        milesTraveled: 12,
+        date: new Date()
+      };
+
+      return Trip
+        .findOne()
+        .exec()
+        .then(function(trip) {
+          updateData.id = trip.id;
+
+          // make request then inspect it to make sure it reflects
+          // data we sent
+          return chai.request(app)
+            .put(`/trips/${trip.id}`)
+            .send(updateData);
+        })
+        .then(function(res) {
+          res.should.have.status(201);
+
+          return Trip.findById(updateData.id).exec();
+        })
+        .then(function(trip) {
+		      normalizeResDate(updateData.date).should.equal(normalizeResDate(updateData.date));
+          trip.milesTraveled.should.equal(updateData.milesTraveled);
+        });
+      });
+  });
+
+  describe('DELETE endpoint', function() {
+    // strategy:
+    //  1. get a Trip
+    //  2. make a DELETE request for that Trip's id
+    //  3. assert that response has right status code
+    //  4. prove that Trip with the id doesn't exist in db anymore
+    it('delete a trip by id', function() {
+
+      let trip;
+
+      return Trip
+        .findOne()
+        .exec()
+        .then(function(_trip) {
+          trip = _trip;
+          return chai.request(app).delete(`/trips/${trip.id}`);
+        })
+        .then(function(res) {
+          res.should.have.status(204);
+          return Trip.findById(trip.id).exec();
+        })
+        .then(function(_trip) {
+          // when a variable's value is null, chaining `should`
+          // doesn't work. so `_trip.should.be.null` would raise
+          // an error. `should.be.null(_trip)` is how we can
+          // make assertions about a null value.
+          should.not.exist(_trip);
+        });
+    });
+  });
+
 });
 
