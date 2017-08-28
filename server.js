@@ -5,14 +5,13 @@ const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
-// const {Trip} = require('./models');
 const Routes = require('./routes');
 const app = express();
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-
+app.use('/trips', Routes);
 
 // closeServer needs access to a server object, but that only
 // gets created when `runServer` runs, so we declare `server` here
