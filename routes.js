@@ -21,7 +21,7 @@ router.get('/trips', (req, res) => {
     });
 });
 
-router.post('/trips', (req, res) => {
+router.post('/add', (req, res) => {
   const requiredFields = ['milesTraveled', 'date'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
