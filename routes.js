@@ -4,9 +4,7 @@ const bodyParser = require('body-parser');
 
 const {Trip} = require('./models');
 
-module.exports = router;
-
-app.get('/trips', (req, res) => {
+server.get('/trips', (req, res) => {
   Trip
     .find()
     .exec()
@@ -19,7 +17,7 @@ app.get('/trips', (req, res) => {
     });
 });
 
-app.post('/trips', (req, res) => {
+server.post('/trips', (req, res) => {
   const requiredFields = ['milesTraveled', 'date'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
@@ -43,7 +41,7 @@ app.post('/trips', (req, res) => {
 
 });
 
-app.put('/trips/:id', (req, res) => {
+server.put('/trips/:id', (req, res) => {
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
     res.status(400).json({
       error: 'Request path id and request body id values must match'
@@ -65,7 +63,7 @@ app.put('/trips/:id', (req, res) => {
     .catch(err => res.status(500).json({message: 'Something went wrong'}));
 });
 
-app.delete('/trips/:id', (req, res) => {
+server.delete('/trips/:id', (req, res) => {
   Trip
     .findByIdAndRemove(req.params.id)
     .exec()
@@ -78,6 +76,8 @@ app.delete('/trips/:id', (req, res) => {
     });
 });
 
-app.use('*', function(req, res) {
+server.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
 });
+
+module.exports = router; 
