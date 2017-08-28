@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
-const {Trip} = require('./models');
-
+// const {Trip} = require('./models');
+const Routes = require('./routes');
 const app = express();
 
 app.use(bodyParser.json());
