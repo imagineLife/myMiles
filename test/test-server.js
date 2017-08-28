@@ -116,7 +116,7 @@ describe('Trips API resources page \n', () => {
 		  const newTrip = generateTripData();
 
 		  return chai.request(app)
-		    .post('/trips')
+		    .post('/add')
 		    .send(newTrip)
 		    .then(function(res) {
 		      res.should.have.status(201);
