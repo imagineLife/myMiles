@@ -38,8 +38,16 @@ form *{
 	font-size: 20px;
 }
 
+form input {
+	color: black;
+}
+
 form label{
 	text-align: center;
+}
+
+form input::placeholder{
+	color: #AAAAAA;
 }
 
 form button {
