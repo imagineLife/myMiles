@@ -1,3 +1,34 @@
+//send for and return the API serach results
+function getResFromAPI(searchVal, callback) {
+	let searchParams = '';
+	let searchSnippet = '';
+
+	for (i = 0; i < searchVal.length; i++){
+		let resObj = searchVal[i];
+		let firstItem = Object.keys(resObj)[0];
+	    let itemName = Object.keys(resObj)[0];
+	    let itemVal = resObj[Object.keys(resObj)[0]];        
+	    searchSnippet = '&' + itemName + '=' + itemVal;
+		searchParams += searchSnippet;
+	  }
+
+	  console.log(searchParams);
+	}
+
+
+	// const infoSettings = {
+	//   url: getRecipesURI+`${searchParams}`,  
+	//   dataType: 'json',
+	//   success: callback,
+	//   error: function(err) { alert(err); },
+	//   beforeSend: function(xhr) {
+	//     xhr.setRequestHeader("X-Mashape-Authorization", "Dw5Du2x9f1mshumfYcTmv8RduW9Op1On2QIjsnwkVvyQwCuMSb");
+	//   }
+	// };
+
+	// $.ajax(infoSettings);
+// };
+
 function parseFormInputs(){
 	let arrInputVals = [];
 	let objInputVal = {};
@@ -13,8 +44,9 @@ function parseFormInputs(){
 		    arrInputVals.push(objInputVal);
 	    }
 	})
-	
-	console.log(objInputVal);
+
+	// console.log(arrInputVals);
+	getResFromAPI(arrInputVals);//, displayAPISearchData);
 }
 
 function validateCorrectInputCount(inputVals){
