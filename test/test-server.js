@@ -63,7 +63,7 @@ function tearDownDb() {
 describe('Trips API resources page \n', () => {
 
 	before(function() {
-		return runServer(TEST_DATABASE_URL);
+		return runServer(TEST_DATABASE_URL, 8081);
 	});
 
 	beforeEach(function() {
