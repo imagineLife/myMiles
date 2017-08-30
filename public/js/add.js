@@ -6,18 +6,15 @@ function tellMeItWorks(){
 
 function getResFromAPI(searchVal) {
 
-	console.log('searchVal is ',searchVal);
 	const infoSettings = {
 	    url: postTripURI,
 	    type: 'POST',
-	    // contentType: 'application/json',
-	    // data: JSON.stringify(searchVal),  
-	    data: searchVal,
+	    contentType: 'application/json',
+	    data: JSON.stringify(searchVal),  
 	    success: tellMeItWorks,
 	    error: function(err) { console.log(err) }
 	};
 
-	// // console.log(infoSettings);
 	$.ajax(infoSettings);
 };
 
@@ -35,9 +32,6 @@ function parseFormInputs(){
 	    }
 	})
 
-	arrInputVals.push(objInputVal);
-
-	// console.log(objInputVal);
 	getResFromAPI(objInputVal);//, displayAPISearchData);
 }
 
