@@ -2,6 +2,7 @@ const postTripURI = `/add`;
 //send for and return the API serach results
 function tellMeItWorks(){
 	console.log('it worked!');
+	window.open("http://localhost:8080/","_self")
 }
 
 function getResFromAPI(searchVal) {
