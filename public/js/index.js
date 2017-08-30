@@ -36,7 +36,6 @@ function generateTableHTML(data){
 
 function displayTable(tBodyElem, rowsHTML, tTotalElem, totMiles){
 	tBodyElem.append(rowsHTML);
-	// console.log(tTotalElem);
 	tTotalElem.text(totMiles);
 }
 
