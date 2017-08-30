@@ -6,7 +6,7 @@ function tellMeItWorks(){
 
 function getResFromAPI(searchVal) {
 
-	console.log(searchVal);
+	console.log('searchVal is ',searchVal);
 	const infoSettings = {
 	    url: postTripURI,
 	    type: 'POST',
@@ -35,19 +35,10 @@ function parseFormInputs(){
 	    }
 	})
 
-	// var obj = $.map($('#form input'), function(x, y) {
-	//     return {
-	//         Key: x.name,
-	//         Value: $(x).val()
-	//     };
-	// });
-	// console.log(obj);
-
 	arrInputVals.push(objInputVal);
 
-	// console.log(arrInputVals);
+	// console.log(objInputVal);
 	getResFromAPI(objInputVal);//, displayAPISearchData);
-	// getResFromAPI(obj);//, displayAPISearchData);
 }
 
 function validateCorrectInputCount(inputVals){
