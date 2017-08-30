@@ -1,8 +1,8 @@
 const postTripURI = `/add`;
 //send for and return the API serach results
-function tellMeItWorks(){
+function sendUserHome(){
 	console.log('it worked!');
-	window.open("http://localhost:8080/","_self")
+	window.location.href = '/';
 }
 
 function getResFromAPI(searchVal) {
@@ -12,7 +12,7 @@ function getResFromAPI(searchVal) {
 	    type: 'POST',
 	    contentType: 'application/json',
 	    data: JSON.stringify(searchVal),  
-	    success: tellMeItWorks,
+	    success: sendUserHome,
 	    error: function(err) { console.log(err) }
 	};
 
@@ -33,7 +33,7 @@ function parseFormInputs(){
 	    }
 	})
 
-	getResFromAPI(objInputVal);//, displayAPISearchData);
+	getResFromAPI(objInputVal);
 }
 
 function validateCorrectInputCount(inputVals){
