@@ -4,8 +4,12 @@ const bodyParser = require('body-parser');
 
 const {Trip} = require('./models');
 
+router.get('/', (req,res) => {
+  res.sendFile('/index.html');
+});
+
 router.get('/add', (req, res) =>{
-  res.sendFile(__dirname + '/public/add.html');
+  res.sendFile('/add.html');
 });
 
 router.get('/trips', (req, res) => {
