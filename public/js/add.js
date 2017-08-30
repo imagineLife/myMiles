@@ -1,33 +1,25 @@
+const postTripURI = `/add`;
 //send for and return the API serach results
-function getResFromAPI(searchVal, callback) {
-	let searchParams = '';
-	let searchSnippet = '';
+function tellMeItWorks(){
+	console.log('it worked!');
+}
 
-	for (i = 0; i < searchVal.length; i++){
-		let resObj = searchVal[i];
-		let firstItem = Object.keys(resObj)[0];
-	    let itemName = Object.keys(resObj)[0];
-	    let itemVal = resObj[Object.keys(resObj)[0]];        
-	    searchSnippet = '&' + itemName + '=' + itemVal;
-		searchParams += searchSnippet;
-	  }
+function getResFromAPI(searchVal) {
 
-	  console.log(searchParams);
-	}
+	console.log(searchVal);
+	const infoSettings = {
+	    url: postTripURI,
+	    type: 'POST',
+	    // contentType: 'application/json',
+	    // data: JSON.stringify(searchVal),  
+	    data: searchVal,
+	    success: tellMeItWorks,
+	    error: function(err) { console.log(err) }
+	};
 
-
-	// const infoSettings = {
-	//   url: getRecipesURI+`${searchParams}`,  
-	//   dataType: 'json',
-	//   success: callback,
-	//   error: function(err) { alert(err); },
-	//   beforeSend: function(xhr) {
-	//     xhr.setRequestHeader("X-Mashape-Authorization", "Dw5Du2x9f1mshumfYcTmv8RduW9Op1On2QIjsnwkVvyQwCuMSb");
-	//   }
-	// };
-
-	// $.ajax(infoSettings);
-// };
+	// // console.log(infoSettings);
+	$.ajax(infoSettings);
+};
 
 function parseFormInputs(){
 	let arrInputVals = [];
@@ -40,13 +32,22 @@ function parseFormInputs(){
 		    let inputVal = this.value;
 		    
 		    objInputVal[inputKey] = inputVal;
-
-		    arrInputVals.push(objInputVal);
 	    }
 	})
 
+	// var obj = $.map($('#form input'), function(x, y) {
+	//     return {
+	//         Key: x.name,
+	//         Value: $(x).val()
+	//     };
+	// });
+	// console.log(obj);
+
+	arrInputVals.push(objInputVal);
+
 	// console.log(arrInputVals);
-	getResFromAPI(arrInputVals);//, displayAPISearchData);
+	getResFromAPI(objInputVal);//, displayAPISearchData);
+	// getResFromAPI(obj);//, displayAPISearchData);
 }
 
 function validateCorrectInputCount(inputVals){
