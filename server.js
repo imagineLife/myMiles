@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
+const {router: usersRouter} = require('./users');
+
 mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
