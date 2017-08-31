@@ -4,7 +4,7 @@ const server = require('../server.js');
 const faker = require('faker');
 const mongoose = require('mongoose');
 
-const {Trip} = require('../models');
+const {Trip} = require('../trips/models');
 const {app, runServer, closeServer} = require('../server');
 const {TEST_DATABASE_URL} = require('../config');
 
