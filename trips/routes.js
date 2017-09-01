@@ -84,8 +84,4 @@ router.delete('/trips/:id', (req, res) => {
     });
 });
 
-router.use('*', function(req, res) {
-  res.status(404).json({message: 'Not Found'});
-});
-
 module.exports = router; 
