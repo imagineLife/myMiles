@@ -1,6 +1,5 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const server = require('../server.js');
 const faker = require('faker');
 const mongoose = require('mongoose');
 
