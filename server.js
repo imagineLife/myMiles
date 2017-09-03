@@ -8,16 +8,16 @@ mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
 
-const Routes = require('./trips/routes');
+const tripsRouter = require('./trips/routes');
 const usersRouter = require('./users/router');
-const {router} = require('./users/');
+// const {router} = require('./users/');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname +'/public'));
 app.use('/api/users', usersRouter);
-app.use('/', Routes);
+app.use('/', tripsRouter);
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
