@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const {Trip} = require('./models');
 
 router.get('/', (req,res) => {
-  res.sendFile('/index.html');
+  res.sendFile('/Users/Jake/Desktop/projects/serverSide/capStone/ciFirstDeployment/myMiles/public/showTrips.html');
 });
 
 router.get('/add', (req, res) =>{
