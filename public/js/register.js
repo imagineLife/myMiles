@@ -1,18 +1,42 @@
+function tellMeItWorks(){
+	console.log('Worked!!');
+}
+
+function getResFromAPI(obj){
+	//API url
+	let registerURL = '/api/users';
+
+		const infoSettings = {
+	    url: registerURL,
+	    type: 'POST',
+	    contentType: 'application/json',
+	    data: JSON.stringify(obj),  
+	    success: tellMeItWorks,
+	    error: function(err) { console.log(err) }
+	};
+
+	$.ajax(infoSettings);
+}
+
 //Gathers form input values on Submit-Click
-//and passes values to a validation function (checkInputs)
+//and passes values to get the API results
 $("#form")
-	.on('click', '#register', (ev) =>{
+	.on('submit', (ev) =>{
 		ev.preventDefault();
 
-	    let inputList = $('#form input');
-	    let inputVals = {};
-	    
-	    for (i = 0; i < inputList.length; i++){
-	    	if(inputList[i].value == ''){}else{
-	      		inputVals[i] = inputList[i].value;
-	      	}
-	    };
+	let arrInputVals = [];
+	let objInputVal = {};
 
-	    console.log(inputVals);
-	    // validateCorrectInputCount(inputVals);
+	$('.form input').each(function() {
+		if( this.value == '') {
+	    }else{
+		    let inputKey = this.name;
+		    let inputVal = this.value;
+		    
+		    objInputVal[inputKey] = inputVal;
+	    }
+	})
+
+	// console.log(objInputVal);
+	getResFromAPI(objInputVal);
 	})
