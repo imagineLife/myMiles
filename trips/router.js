@@ -9,7 +9,7 @@ router.get('/', (req,res) => {
 });
 
 router.get('/add', (req, res) =>{
-  res.sendFile('/add.html');
+  res.sendFile('/Users/Jake/Desktop/projects/serverSide/capStone/ciFirstDeployment/myMiles/public/add.html');
 });
 
 router.get('/trips', (req, res) => {

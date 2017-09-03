@@ -156,6 +156,10 @@ router.post('/', jsonParser, (req, res) => {
 // we're just doing this so we have a quick way to see
 // if we're creating users. keep in mind, you can also
 // verify this in the Mongo shell.
+
+//*****
+//THIS WILL PASS TESTS
+//*****
 // router.get('/', (req, res) => {
 //   return User
 //     .find()
@@ -164,7 +168,7 @@ router.post('/', jsonParser, (req, res) => {
 // });
 
 router.get('/', (req, res) => {
-  res.sendFile('/register.html');
+  res.sendFile('/Users/Jake/Desktop/projects/serverSide/capStone/ciFirstDeployment/myMiles/public/register.html');
 });
 
 module.exports = router;
