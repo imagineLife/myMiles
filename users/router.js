@@ -160,15 +160,15 @@ router.post('/', jsonParser, (req, res) => {
 //*****
 //THIS WILL PASS TESTS
 //*****
-// router.get('/', (req, res) => {
-//   return User
-//     .find()
-//     .then(users => res.json(users.map(user => user.apiRepr())))
-//     .catch(err => res.status(500).json({message: 'Internal server error'}));
-// });
-
 router.get('/', (req, res) => {
-  res.sendFile('/Users/Jake/Desktop/projects/serverSide/capStone/ciFirstDeployment/myMiles/public/register.html');
+  return User
+    .find()
+    .then(users => res.json(users.map(user => user.apiRepr())))
+    .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
+
+// router.get('/', (req, res) => {
+//   res.sendFile('/Users/Jake/Desktop/projects/serverSide/capStone/ciFirstDeployment/myMiles/public/register.html');
+// });
 
 module.exports = router;
