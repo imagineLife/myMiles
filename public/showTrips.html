@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width">
+  	<link rel="stylesheet" type="text/css" href="css/main.css">
+  	<link rel="stylesheet" href="css/float-grid.css" />
+  	<title>TripTracker</title>
+  </head>
+  <body>
+
+    <table class="trip-table row">
+      <caption>Trips Logged</caption>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Distance</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td>TOTAL</td>
+          <td class="trip-table-total-miles"></td>
+        </tr>
+      </tfoot>
+      <tbody class="trip-table-body">
+      </tbody>
+    </table>
+
+    <a href="add.html">Save New Trip</a>
+
+    <script 
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+    </script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
