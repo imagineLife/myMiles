@@ -57,6 +57,12 @@ form button {
 	margin-top:50px;
 }
 
+.buttonBox{
+	bottom:0;
+	position: absolute;
+	width:100%;
+	padding:10px;
+}
 a {
 	background: rgba(255, 255, 255, 0.5);
 	border-radius:10px;
