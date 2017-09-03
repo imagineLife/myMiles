@@ -18,6 +18,9 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname +'/public'));
 app.use('/api/users', usersRouter);
 app.use('/', tripsRouter);
+app.use('/register', (req,res) => {
+  res.sendFile(__dirname + '/public/register.html');
+})
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
