@@ -10,6 +10,8 @@ const {PORT, DATABASE_URL} = require('./config');
 
 const tripsRouter = require('./trips/router');
 const usersRouter = require('./users/router');
+const {router: authRouter, basicStrategy, jwtStrategy} = require('./auth');
+
 // const {router} = require('./users/');
 
 const app = express();
