@@ -23,6 +23,7 @@ passport.use(jwtStrategy);
 // app.use(bodyParser.json());
 app.use(express.static(__dirname +'/public'));
 app.use('/api/users', usersRouter);
+app.use('/api/auth/', authRouter);
 app.use('/', tripsRouter);
 app.use('/register', (req,res) => {
   res.sendFile(__dirname + '/public/register.html');
