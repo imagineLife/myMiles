@@ -20,6 +20,9 @@ app.use('/api/users', usersRouter);
 app.use('/', tripsRouter);
 app.use('/register', (req,res) => {
   res.sendFile(__dirname + '/public/register.html');
+});
+app.use('/login', (req,res) => {
+  res.sendFile(__dirname + '/public/login.html');
 })
 
 app.use('*', function(req, res) {
