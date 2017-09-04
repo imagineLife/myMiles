@@ -1,8 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const passport = require('passport');
-
 
 mongoose.Promise = global.Promise;
 
@@ -16,7 +16,11 @@ const {router: authRouter, basicStrategy, jwtStrategy} = require('./auth');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(passport.initialize());
+passport.use(basicStrategy);
+passport.use(jwtStrategy);
+
+// app.use(bodyParser.json());
 app.use(express.static(__dirname +'/public'));
 app.use('/api/users', usersRouter);
 app.use('/', tripsRouter);
