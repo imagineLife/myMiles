@@ -15,8 +15,8 @@ function getResFromAPI(obj){
 	    error: function(err) { console.log(err) }
 	};
 
-	console.log(infoSettings);
-	// $.ajax(infoSettings);
+	// console.log(infoSettings);
+	$.ajax(infoSettings);
 }
 
 //Gathers form input values on Submit-Click
