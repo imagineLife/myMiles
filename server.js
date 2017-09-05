@@ -32,6 +32,16 @@ app.use('/login', (req,res) => {
   res.sendFile(__dirname + '/public/login.html');
 })
 
+// A protected endpoint which needs a valid JWT to access it
+app.get('/api/protected',
+    passport.authenticate('jwt', {session: false}),
+    (req, res) => {
+        return res.json({
+            data: 'rosebud'
+        });
+    }
+);
+
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
 });
