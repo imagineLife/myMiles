@@ -90,7 +90,7 @@ describe('Trips API resources page \n', () => {
 			// `.then()` calls below, so declare it here so can modify in place
 			let res;
 			return chai.request(app)
-				.get('/trips')
+				.get('/api/trips')
 				.then(function(_res) {
 				  // res, so that subsequent (.then) blocks can access /trips response obj (_res).
 				  res = _res;
@@ -115,7 +115,7 @@ describe('Trips API resources page \n', () => {
 		  const newTrip = generateTripData();
 
 		  return chai.request(app)
-		    .post('/add')
+		    .post('/api/trips')
 		    .send(newTrip)
 		    .then(function(res) {
 		      res.should.have.status(201);
@@ -159,7 +159,7 @@ describe('Trips API resources page \n', () => {
           // make request then inspect it to make sure it reflects
           // data we sent
           return chai.request(app)
-            .put(`/trips/${trip.id}`)
+            .put(`/api/trips/${trip.id}`)
             .send(updateData);
         })
         .then(function(res) {
@@ -189,7 +189,7 @@ describe('Trips API resources page \n', () => {
         .exec()
         .then(function(_trip) {
           trip = _trip;
-          return chai.request(app).delete(`/trips/${trip.id}`);
+          return chai.request(app).delete(`/api/trips/${trip.id}`);
         })
         .then(function(res) {
           res.should.have.status(204);
