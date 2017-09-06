@@ -1,16 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
-
+const path = require('path');
 const {Trip} = require('./models');
 
 router.get('/', (req,res) => {
-  // res.sendFile('/Users/Jake/Desktop/projects/serverSide/capStone/ciFirstDeployment/myMiles/public/showTrips.html');
-  res.sendFile('/Users/Jake/Desktop/projects/serverSide/capStone/ciFirstDeployment/myMiles/public/splash.html');
+  res.sendFile(path.resolve('public/splash.html'));
 });
 
 router.get('/add', (req, res) =>{
-  res.sendFile('/Users/Jake/Desktop/projects/serverSide/capStone/ciFirstDeployment/myMiles/public/add.html');
+  res.sendFile(path.resolve('public/add.html'));
 });
 
 router.get('/trips', (req, res) => {

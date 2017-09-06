@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 // const bodyParser = require('body-parser');
 const passport = require('passport');
 
@@ -26,10 +27,10 @@ app.use('/api/users', usersRouter);
 app.use('/api/auth/', authRouter);
 app.use('/', tripsRouter);
 app.use('/register', (req,res) => {
-  res.sendFile(__dirname + '/public/register.html');
+  res.sendFile(path.resolve('public/register.html'));
 });
 app.use('/login', (req,res) => {
-  res.sendFile(__dirname + '/public/login.html');
+  res.sendFile(path.resolve('public/login.html'));
 })
 
 // A protected endpoint which needs a valid JWT to access it
