@@ -12,7 +12,7 @@ router.get('/add', (req, res) =>{
   res.sendFile(path.resolve('public/add.html'));
 });
 
-router.get('/trips', (req, res) => {
+router.get('/api/trips', (req, res) => {
   Trip
     .find()
     .exec()
@@ -25,7 +25,7 @@ router.get('/trips', (req, res) => {
     });
 });
 
-router.post('/add', (req, res) => {
+router.post('/api/trips', (req, res) => {
   const requiredFields = ['milesTraveled', 'date'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
@@ -49,7 +49,7 @@ router.post('/add', (req, res) => {
 
 });
 
-router.put('/trips/:id', (req, res) => {
+router.put('/api/trips/:id', (req, res) => {
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
     res.status(400).json({
       error: 'Request path id and request body id values must match'
@@ -71,7 +71,7 @@ router.put('/trips/:id', (req, res) => {
     .catch(err => res.status(500).json({message: 'Something went wrong'}));
 });
 
-router.delete('/trips/:id', (req, res) => {
+router.delete('/api/trips/:id', (req, res) => {
   Trip
     .findByIdAndRemove(req.params.id)
     .exec()
