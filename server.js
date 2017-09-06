@@ -1,47 +1,27 @@
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-// const bodyParser = require('body-parser');
-const passport = require('passport');
-
+const bodyParser = require('body-parser');
 mongoose.Promise = global.Promise;
 
 const {PORT, DATABASE_URL} = require('./config');
 
 const tripsRouter = require('./trips/router');
 const usersRouter = require('./users/router');
-const {router: authRouter, basicStrategy, jwtStrategy} = require('./auth');
-
-// const {router} = require('./users/');
 
 const app = express();
 
-app.use(passport.initialize());
-passport.use(basicStrategy);
-passport.use(jwtStrategy);
-
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(express.static(__dirname +'/public'));
 app.use('/api/users', usersRouter);
-app.use('/api/auth/', authRouter);
 app.use('/', tripsRouter);
+
 app.use('/register', (req,res) => {
   res.sendFile(path.resolve('public/register.html'));
 });
 app.use('/login', (req,res) => {
   res.sendFile(path.resolve('public/login.html'));
 })
-
-// A protected endpoint which needs a valid JWT to access it
-app.get('/api/protected',
-    passport.authenticate('jwt', {session: false}),
-    (req, res) => {
-        return res.json({
-            data: 'rosebud'
-        });
-    }
-);
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
