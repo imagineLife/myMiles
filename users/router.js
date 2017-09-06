@@ -167,8 +167,4 @@ router.get('/', (req, res) => {
     .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
-// router.get('/', (req, res) => {
-//   res.sendFile('/Users/Jake/Desktop/projects/serverSide/capStone/ciFirstDeployment/myMiles/public/register.html');
-// });
-
 module.exports = router;
