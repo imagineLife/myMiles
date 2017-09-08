@@ -17,10 +17,14 @@ describe('Users API resources page \n', function() {
   const password = 'examplePass';
   const firstName = 'Example';
   const lastName = 'User';
+  // const dummyTrip = "{date : 2017-09-09,milesTraveled : 3}";
+  const emptyTrip = [];
   const usernameB = 'exampleUserB';
   const passwordB = 'examplePassB';
   const firstNameB = 'ExampleB';
   const lastNameB = 'UserB';
+  // const dummyTripB = "{date : 2017-09-09,milesTraveled : 3}";
+  const emptyTripB = [];
 
   before(function() {
     return runServer(TEST_DATABASE_URL, 8081);
@@ -323,7 +327,7 @@ describe('Users API resources page \n', function() {
           .then(res => {
             expect(res).to.have.status(201);
             expect(res.body).to.be.an('object');
-            expect(res.body).to.have.keys('username', 'firstName', 'lastName');
+            expect(res.body).to.have.keys('username', 'firstName', 'lastName', 'trips');
             expect(res.body.username).to.equal(username);
             expect(res.body.firstName).to.equal(firstName);
             expect(res.body.lastName).to.equal(lastName);
@@ -353,7 +357,7 @@ describe('Users API resources page \n', function() {
           .then(res => {
             expect(res).to.have.status(201);
             expect(res.body).to.be.an('object');
-            expect(res.body).to.have.keys('username', 'firstName', 'lastName');
+            expect(res.body).to.have.keys('username', 'firstName', 'lastName', 'trips');
             expect(res.body.username).to.equal(username);
             expect(res.body.firstName).to.equal(firstName);
             expect(res.body.lastName).to.equal(lastName);
@@ -385,27 +389,29 @@ describe('Users API resources page \n', function() {
           password,
           firstName,
           lastName
-        }, {
-          username: usernameB,
-          password: passwordB,
-          firstName: firstNameB,
-          lastName: lastNameB
-        })
+        })//, {
+        //   username: usernameB,
+        //   password: passwordB,
+        //   firstName: firstNameB,
+        //   lastName: lastNameB,
+        // })
         .then(() => chai.request(app).get('/api/users'))
         .then(res => {
           expect(res).to.have.status(200);
           expect(res.body).to.be.an('array');
-          expect(res.body).to.have.length(2);
+          expect(res.body).to.have.length(1);
           expect(res.body[0]).to.deep.equal({
             username,
             firstName,
-            lastName
+            lastName,
+            trips: []
           });
-          expect(res.body[1]).to.deep.equal({
-            username: usernameB,
-            firstName: firstNameB,
-            lastName: lastNameB
-          });
+          // expect(res.body[1]).to.deep.equal({
+          //   username: usernameB,
+          //   firstName: firstNameB,
+          //   lastName: lastNameB,
+          //   trips: emptyTripB
+          // });
         });
       });
     });
