@@ -3,6 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const path = require('path');
 const {Trip} = require('./models');
+const {User} = require('../users/models');
 
 router.get('/', (req,res) => {
   res.sendFile(path.resolve('public/splash.html'));
