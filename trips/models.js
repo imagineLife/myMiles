@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const tripSchema = mongoose.Schema({
 	milesTraveled: {
@@ -8,14 +9,16 @@ const tripSchema = mongoose.Schema({
 	date: {
 		type: Date,
 		required: true
-	}
+	},
+	user: { type: Schema.Types.ObjectId, ref: 'User'}
 })
 
 tripSchema.methods.apiRepr = function(){
 	return{
 		id: this._id,
 		milesTraveled: this.milesTraveled,
-		date: this.date
+		date: this.date,
+		user: this.user
 	}
 }
 
