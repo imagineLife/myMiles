@@ -1,5 +1,6 @@
-function tellMeItWorks(){
-	console.log('Worked!!');
+function moveToTripsPage(){
+	// console.log('Worked!!');
+	window.location.href = '/trips';
 }
 
 function getResFromAPI(obj){
@@ -11,7 +12,7 @@ function getResFromAPI(obj){
 	    type: 'POST',
 	    contentType: 'application/json',
 	    data: JSON.stringify(obj),  
-	    success: tellMeItWorks,
+	    success: moveToTripsPage,
 	    error: function(err) { console.log(err) }
 	};
 
