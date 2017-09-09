@@ -15,9 +15,16 @@ const createAuthToken = user => {
 const router = express.Router();
 
 router.post('/login',
-  // The user provides a username and password to login
+  // // The user provides a username and password to login
+  // passport.authenticate('basic', {session: { cookie: { maxAge: 5000 }}, failureFlash: true}),
+
   passport.authenticate('basic', {session: false}),
+
   (req, res) => {
+
+    // req.flash();
+    // console.log(req.body);
+
     const authToken = createAuthToken(req.user.apiRepr());
     res.json({authToken});
   }
