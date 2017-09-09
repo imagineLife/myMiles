@@ -1,4 +1,4 @@
-const getTripURI = `/trips`;
+const getTripURI = `/api/trips`;
 
 function getResFromAPI() {
 	const infoSettings = {
