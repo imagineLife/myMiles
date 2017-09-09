@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const flash = require('connect-flash');
 
 mongoose.Promise = global.Promise;
 
@@ -14,10 +15,6 @@ const usersRouter = require('./users/router');
 const {router: authRouter, basicStrategy, jwtStrategy} = require('./auth');
 
 const app = express();
-
-app.use(passport.initialize());
-passport.use(basicStrategy);
-passport.use(jwtStrategy);
 
 // CORS
 app.use(function (req, res, next) {
@@ -30,7 +27,15 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(passport.authenticate('session'));
+passport.use(basicStrategy);
+passport.use(jwtStrategy);
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(__dirname +'/public'));
 app.use('/api/users', usersRouter);
 app.use('/api/auth', authRouter);
@@ -43,6 +48,15 @@ app.use('/login', (req,res) => {
   res.sendFile(path.resolve('public/login.html'));
 })
 
+// A protected endpoint which needs a valid JWT to access it
+app.get('/api/protected',
+    passport.authenticate('jwt', {session: false}),
+    (req, res) => {
+        return res.json({
+            data: 'rosebud'
+        });
+    }
+);
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
