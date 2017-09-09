@@ -13,6 +13,10 @@ router.get('/add', (req, res) =>{
   res.sendFile(path.resolve('public/add.html'));
 });
 
+router.get('/trips', (req, res) =>{
+  res.sendFile(path.resolve('public/showTrips.html'));
+});
+
 router.get('/api/trips', (req, res) => {
   Trip
     .find()
