@@ -15,16 +15,12 @@ const createAuthToken = user => {
 const router = express.Router();
 
 router.post('/login',
-  // // The user provides a username and password to login
-  // passport.authenticate('basic', {session: { cookie: { maxAge: 5000 }}, failureFlash: true}),
-
-  passport.authenticate('basic', {session: false}),
-
+  // The user provides a username and password to login
+  // passport.authenticate('basic', {session: false}),
   (req, res) => {
-
-    // req.flash();
-    // console.log(req.body);
-
+    console.log('***** req.body is\n',
+      req.body,
+      '\n*****');
     const authToken = createAuthToken(req.user.apiRepr());
     res.json({authToken});
   }
@@ -35,6 +31,9 @@ router.post('/refresh',
   // expiration
   passport.authenticate('jwt', {session: false}),
   (req, res) => {
+    console.log('*****RES IS\n',
+      res,
+      '\n*****');
     const authToken = createAuthToken(req.user);
     res.json({authToken});
   }
