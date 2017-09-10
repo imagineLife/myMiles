@@ -16,7 +16,7 @@ const UserSchema = mongoose.Schema({
   },
   firstName: {type: String, default: ""},
   lastName: {type: String, default: ""},
-  trips: [{ type: Schema.Types.ObjectId, ref:'Trip' }]
+  trips: [{ type: Schema.Types.ObjectId, ref: 'Trip' }]
 });
 
 UserSchema.methods.apiRepr = function() {
