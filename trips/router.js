@@ -30,6 +30,21 @@ router.get('/api/trips', (req, res) => {
     });
 });
 
+router.get('/api/trips/:id', (req, res) => {
+  console.log(req.params.id);
+    User
+    .findById(req.params.id)
+    // .findById(req.params.id)
+    .populate('trips')
+    // .find()
+    .exec()
+    .then(user => res.status(201).json(user.trips))    
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
+});
+
 router.post('/api/trips', (req, res) => {
   const requiredFields = ['milesTraveled', 'date'];
   for (let i=0; i<requiredFields.length; i++) {
