@@ -30,9 +30,9 @@ app.use(function (req, res, next) {
 // app.use(flash());
 // app.use(passport.initialize());
 // // app.use(passport.session());
-// // app.use(passport.authenticate('session'));
+// app.use(passport.authenticate('session'));
 passport.use(basicStrategy);
-// passport.use(jwtStrategy);
+passport.use(jwtStrategy);
 
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({extended:false}));
