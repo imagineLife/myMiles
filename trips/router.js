@@ -34,9 +34,7 @@ router.get('/api/trips/:id', (req, res) => {
   console.log(req.params.id);
     User
     .findById(req.params.id)
-    // .findById(req.params.id)
     .populate('trips')
-    // .find()
     .exec()
     .then(user => res.status(201).json(user.trips))    
     .catch(err => {
@@ -44,6 +42,26 @@ router.get('/api/trips/:id', (req, res) => {
       res.status(500).json({error: 'something went terribly wrong'});
     });
 });
+
+/*
+  WILL THIS BE THE NEW PROTECTED ENDPOINT?!?!
+  router.get('/api/protected/trips/:id', (req, res) => {
+  console.log(req.params.id);
+  passport.authenticate('jwt', {session: false}),
+  (req, res) => {
+    User
+    .findById(req.params.id)
+    .populate('trips')
+    .exec()
+    .then(user => res.status(201).json(user.trips))    
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
+  }
+});
+
+*/
 
 router.post('/api/trips', (req, res) => {
   const requiredFields = ['milesTraveled', 'date'];
@@ -78,6 +96,7 @@ router.put('/api/trips/:id', (req, res) => {
 
   const updated = {};
   const updateableFields = ['milesTraveled', 'date'];
+
   updateableFields.forEach(field => {
     if (field in req.body) {
       updated[field] = req.body[field];
