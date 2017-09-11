@@ -4,6 +4,7 @@ const faker = require('faker');
 const mongoose = require('mongoose');
 
 const {Trip} = require('../trips/models');
+const {User} = require('../users/models');
 const {app, runServer, closeServer} = require('../server');
 const {TEST_DATABASE_URL} = require('../config');
 
@@ -88,11 +89,11 @@ describe('Trips API resources page \n', () => {
 			//
 			// need to have access to mutate and access `res` across
 			// `.then()` calls below, so declare it here so can modify in place
+      // NOTE res, so that subsequent (.then) blocks can access the same /trips response obj (_res).
 			let res;
 			return chai.request(app)
 				.get('/api/trips')
 				.then(function(_res) {
-				  // res, so that subsequent (.then) blocks can access /trips response obj (_res).
 				  res = _res;
 				  res.should.have.status(200);
 				  // otherwise our db seeding didn't work
@@ -103,7 +104,12 @@ describe('Trips API resources page \n', () => {
 					res.body.should.have.lengthOf(count);
 				});
     	});
-    });
+
+//NEW TEST, get trips of logged-in-user
+    // it.only('should return all trips of a user', function() {
+      
+    // });
+  });
 
 	describe('POST endpoint', function() {
 		// strategy: make a POST request with data,
