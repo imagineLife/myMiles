@@ -1,18 +1,24 @@
-function moveToTripsPage(){
-	// console.log('Worked!!');
+function moveToTripsPage(response){
+	console.log('res is \n',
+		response);
 	window.location.href = '/trips';
 }
 
 function getResFromAPI(obj){
+	// console.log(obj)
 	//API url
-	let registerURL = '/api/auth/login';
+	let loginURL = '/api/auth/login';
+	// let getUserTripsURL = '/api/trips/';
 
 		const infoSettings = {
-	    url: registerURL,
+	    url: loginURL,
+	    // url: getUserTripsURL+`{}`
 	    type: 'POST',
 	    contentType: 'application/json',
 	    data: JSON.stringify(obj),  
-	    success: moveToTripsPage,
+	    success: function(response){
+	    	moveToTripsPage(response);
+	    },
 	    error: function(err) { console.log(err) }
 	};
 
