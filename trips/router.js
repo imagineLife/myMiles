@@ -4,6 +4,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const {Trip} = require('./models');
 const {User} = require('../users/models');
+const passport = require('passport');
+const {router: authRouter, basicStrategy, jwtStrategy} = require('../auth');
+
+
+passport.use(jwtStrategy);
 
 router.get('/', (req,res) => {
   res.sendFile(path.resolve('public/splash.html'));
@@ -30,38 +35,21 @@ router.get('/api/trips', (req, res) => {
     });
 });
 
-router.get('/api/trips/:id', (req, res) => {
-  console.log(req.params.id);
-    User
-    .findById(req.params.id)
-    .populate('trips')
-    .exec()
-    .then(user => res.status(201).json(user.trips))    
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({error: 'something went terribly wrong'});
-    });
-});
-
-/*
-  WILL THIS BE THE NEW PROTECTED ENDPOINT?!?!
-  router.get('/api/protected/trips/:id', (req, res) => {
-  console.log(req.params.id);
-  passport.authenticate('jwt', {session: false}),
-  (req, res) => {
-    User
-    .findById(req.params.id)
-    .populate('trips')
-    .exec()
-    .then(user => res.status(201).json(user.trips))    
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({error: 'something went terribly wrong'});
-    });
-  }
-});
-
-*/
+// A protected endpoint which needs a valid JWT to access it
+router.get('/api/trips/:id',
+    // passport.authenticate('jwt', {session: false}),
+    (req, res) => {
+          User
+          .findById(req.params.id)
+          .populate('trips')
+          .exec()
+          .then(user => res.status(201).json(user.trips))    
+          .catch(err => {
+            console.error(err);
+            res.status(500).json({error: 'something went terribly wrong'});
+          });
+    }
+);
 
 router.post('/api/trips', (req, res) => {
   const requiredFields = ['milesTraveled', 'date'];
