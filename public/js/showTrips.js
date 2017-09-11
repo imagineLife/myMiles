@@ -1,8 +1,12 @@
-const getTripURI = `/api/trips`;
+const getTripURI = `/api/trips/`;
 
 function getResFromAPI() {
+	let params = (new URL(document.location)).searchParams;
+	let id = params.get("id");
+	console.log(id);
+
 	const infoSettings = {
-      url: getTripURI,  
+      url: getTripURI+id,  
       dataType: 'json',
       success: generateTableHTML,
       error: function(err) { console.log(err) },
@@ -39,13 +43,7 @@ function displayTable(tBodyElem, rowsHTML, tTotalElem, totMiles){
 	tTotalElem.text(totMiles);
 }
 
-function doEverything(){
-	//get request to '/trips'
-	//output results into table rows
-	getResFromAPI();
-}
-
-$(doEverything);
+$(getResFromAPI);
 
 
           
