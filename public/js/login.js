@@ -1,14 +1,9 @@
-function moveToTripsPage(response){
-	console.log('res is \n',
-		response);
-	window.location.href = '/trips';
+function moveToTripsPage(res){
+	window.location.href = '/trips?id='+res.id;
 }
 
 function getResFromAPI(obj){
-	// console.log(obj)
-	//API url
 	let loginURL = '/api/auth/login';
-	// let getUserTripsURL = '/api/trips/';
 
 		const infoSettings = {
 	    url: loginURL,
@@ -16,13 +11,10 @@ function getResFromAPI(obj){
 	    type: 'POST',
 	    contentType: 'application/json',
 	    data: JSON.stringify(obj),  
-	    success: function(response){
-	    	moveToTripsPage(response);
-	    },
+	    success: function(res){moveToTripsPage(res)},
 	    error: function(err) { console.log(err) }
 	};
 
-	// console.log(infoSettings);
 	$.ajax(infoSettings);
 }
 
