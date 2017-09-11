@@ -17,13 +17,11 @@ describe('Users API resources page \n', function() {
   const password = 'examplePass';
   const firstName = 'Example';
   const lastName = 'User';
-  // const dummyTrip = "{date : 2017-09-09,milesTraveled : 3}";
   const emptyTrip = [];
   const usernameB = 'exampleUserB';
   const passwordB = 'examplePassB';
   const firstNameB = 'ExampleB';
   const lastNameB = 'UserB';
-  // const dummyTripB = "{date : 2017-09-09,milesTraveled : 3}";
   const emptyTripB = [];
 
   before(function() {
