@@ -1,8 +1,8 @@
 const getTripURI = `/api/trips/`;
 
 function getResFromAPI() {
-	let params = (new URL(document.location)).searchParams;
-	let id = params.get("id");
+	let idParam = (new URL(document.location)).searchParams;
+	let id = idParam.get("id");
 	console.log(id);
 
 	const infoSettings = {
@@ -44,6 +44,3 @@ function displayTable(tBodyElem, rowsHTML, tTotalElem, totMiles){
 }
 
 $(getResFromAPI);
-
-
-          
