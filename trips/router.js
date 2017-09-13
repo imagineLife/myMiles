@@ -19,6 +19,7 @@ router.get('/add', (req, res) =>{
 });
 
 router.get('/trips', (req, res) =>{
+  // console.log('*****trips req is ',req);
   res.sendFile(path.resolve('public/showTrips.html'));
 });
 
