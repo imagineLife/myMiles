@@ -18,14 +18,22 @@ router.post('/login',
   // The user provides a username and password to login
   passport.authenticate('basic', {session: false}),
   (req, res) => {
-    console.log(req.user);
+    console.log('!!!!!',req.user);
     const authToken = createAuthToken(req.user.apiRepr());
-    res.json({
+    return res.json({
       authToken,
       id: req.user._id
-    });
+    })
   }
 );
+
+// router.get('/logout', 
+//   // passport.authenticate('basic', {session: false}),
+//   (req, res) => {
+//     req.logOut();
+//     res.send('loged Out!');
+//     window.location.href = '/';
+// });
 
 router.post('/refresh',
   // The user exchanges an existing valid JWT for a new one with a later
