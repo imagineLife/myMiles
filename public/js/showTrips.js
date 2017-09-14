@@ -3,7 +3,6 @@ const getTripURI = `/api/trips/`;
 function getResFromAPI() {
 	let idParam = (new URL(document.location)).searchParams;
 	let id = idParam.get("id");
-	console.log(id);
 
 	const infoSettings = {
       url: getTripURI+id,  
