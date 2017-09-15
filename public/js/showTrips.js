@@ -7,7 +7,10 @@ function getResFromAPI() {
 	const infoSettings = {
       url: getTripURI+id,  
       dataType: 'json',
-      success: generateTableHTML,
+	  beforeSend: req => {
+	    req.setRequestHeader('Authorization', 'Bearer ' + Cookies.get('authToken'));
+	  },
+	  success: generateTableHTML,
       error: function(err) { console.log(err) },
     };
 

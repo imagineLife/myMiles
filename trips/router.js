@@ -19,7 +19,6 @@ router.get('/add', (req, res) =>{
 });
 
 router.get('/trips', (req, res) =>{
-  // console.log('*****trips req is ',req);
   res.sendFile(path.resolve('public/showTrips.html'));
 });
 
@@ -36,9 +35,9 @@ router.get('/api/trips', (req, res) => {
     });
 });
 
-// A protected endpoint which needs a valid JWT to access it
+// A PROTECTED endpoint which needs a valid JWT to access it
 router.get('/api/trips/:id',
-    // passport.authenticate('jwt', {session: false}),
+    passport.authenticate('jwt', {session: false}),
     (req, res) => {
           User
           .findById(req.params.id)

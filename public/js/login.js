@@ -1,4 +1,4 @@
-function getResFromAPI(userCredentials){
+function logMeIn(userCredentials){
 	let loginURL = '/api/auth/login';
 	const { username, password } = userCredentials;
 	const encodedStr = btoa(`${username}:${password}`);
@@ -12,11 +12,15 @@ function getResFromAPI(userCredentials){
   	    contentType: 'application/json',
 	    data: JSON.stringify(userCredentials),
 	    // success: function(user){console.log(user); window.location='/trips?id='+user._id;}, 
-	    success: (user) => window.location='/trips?id='+user._id, 
+	    success: (user) => {
+	    	Cookies.set('authToken', user.authToken);
+	    	console.log(Cookies.get('authToken'));
+	    	window.location='/trips?id='+user._id;
+	    }, 
 	    error: function(err) { console.log(err) }
 	};
 
-	$.ajax(infoSettings);
+	$.ajax(infoSettings);//.then((res)=>console.log(res));
 }
 
 //Gathers form input values on Submit-Click
@@ -38,5 +42,12 @@ $("#form")
 	    }
 	})
 
-	getResFromAPI(objInputVal);
+	logMeIn(objInputVal);
 	})
+
+
+/*
+	logMeIn.then(getMyTrips)
+
+	logmein redirects to dashboard frontend -> dashboard makes signed api req
+*/
