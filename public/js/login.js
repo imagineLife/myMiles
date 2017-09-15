@@ -1,13 +1,16 @@
-
-
-function getResFromAPI(obj){
+function getResFromAPI(userCredentials){
 	let loginURL = '/api/auth/login';
+	const { username, password } = userCredentials;
+	const encodedStr = btoa(`${username}:${password}`);
 
 	const infoSettings = {
 	    url: loginURL,
 	    type: 'POST',
-	    contentType: 'application/json',
-	    data: JSON.stringify(obj),
+		beforeSend: req => {
+		    req.setRequestHeader('Authorization', 'Basic ' + encodedStr);
+		  },
+  	    contentType: 'application/json',
+	    data: JSON.stringify(userCredentials),
 	    // success: function(user){console.log(user); window.location='/trips?id='+user._id;}, 
 	    success: (user) => window.location='/trips?id='+user._id, 
 	    error: function(err) { console.log(err) }
