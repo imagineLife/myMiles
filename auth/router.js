@@ -24,6 +24,11 @@ router.post('/login',
   }
 );
 
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/login');
+});
+
 // router.get('/logout', 
 //   // passport.authenticate('basic', {session: false}),
 //   (req, res) => {
