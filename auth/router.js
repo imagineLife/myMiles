@@ -4,13 +4,12 @@ const jwt = require('jsonwebtoken');
 
 const config = require('../config');
 
-const createAuthToken = user => {
+const createAuthToken = (user,callback) => {
   return jwt.sign({user}, config.JWT_SECRET, {
     subject: user.username,
     expiresIn: config.JWT_EXPIRY,
     algorithm: 'HS256'
-  });
-};
+   }, callback )};
 
 const router = express.Router();
 
@@ -18,12 +17,10 @@ router.post('/login',
   // The user provides a username and password to login
   passport.authenticate('basic', {session: false}),
   (req, res) => {
-    console.log('!!!!!',req.user);
-    const authToken = createAuthToken(req.user.apiRepr());
-    return res.json({
-      authToken,
-      id: req.user._id
-    })
+    const authToken = createAuthToken(req.user, function(err,token){
+      req.user.authToken = token;
+      return res.status(200).json(req.user);
+    });  
   }
 );
 
