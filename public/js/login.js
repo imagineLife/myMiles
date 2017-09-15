@@ -1,3 +1,9 @@
+function redirect(user){
+	Cookies.set('authToken', user.authToken);
+	console.log(Cookies.get('authToken'));
+	window.location='/trips?id='+user._id;
+}
+
 function logMeIn(userCredentials){
 	let loginURL = '/api/auth/login';
 	const { username, password } = userCredentials;
@@ -11,16 +17,11 @@ function logMeIn(userCredentials){
 		  },
   	    contentType: 'application/json',
 	    data: JSON.stringify(userCredentials),
-	    // success: function(user){console.log(user); window.location='/trips?id='+user._id;}, 
-	    success: (user) => {
-	    	Cookies.set('authToken', user.authToken);
-	    	console.log(Cookies.get('authToken'));
-	    	window.location='/trips?id='+user._id;
-	    }, 
-	    error: function(err) { console.log(err) }
 	};
 
-	$.ajax(infoSettings);//.then((res)=>console.log(res));
+	$.ajax(infoSettings)
+		.then(redirect)
+		.catch((err)=>console.log(err));
 }
 
 //Gathers form input values on Submit-Click
@@ -44,10 +45,3 @@ $("#form")
 
 	logMeIn(objInputVal);
 	})
-
-
-/*
-	logMeIn.then(getMyTrips)
-
-	logmein redirects to dashboard frontend -> dashboard makes signed api req
-*/
