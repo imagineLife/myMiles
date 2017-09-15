@@ -45,6 +45,7 @@ app.use('/register', (req,res) => {
   res.sendFile(path.resolve('public/register.html'));
 });
 app.use('/login', (req,res) => {
+  req.logOut();
   res.sendFile(path.resolve('public/login.html'));
 })
 
