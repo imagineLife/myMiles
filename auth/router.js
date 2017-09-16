@@ -29,14 +29,6 @@ router.get('/logout', function(req, res){
   res.redirect('/login');
 });
 
-// router.get('/logout', 
-//   // passport.authenticate('basic', {session: false}),
-//   (req, res) => {
-//     req.logOut();
-//     res.send('loged Out!');
-//     window.location.href = '/';
-// });
-
 router.post('/refresh',
   // The user exchanges an existing valid JWT for a new one with a later
   // expiration
