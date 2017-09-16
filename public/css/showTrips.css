@@ -1,0 +1,86 @@
+body{
+	background-color: black;
+}
+
+table{
+	width: 100%;
+	color: rgba(255,255,255,.9);
+	text-align:center;
+	font-size: 25px; 
+}
+
+th{
+	padding:10px;
+	font-size:.9em;
+}
+
+tbody td{
+	padding:5px;
+	font-size: .7em;
+}
+
+/* Background-color of the odd rows */
+tbody tr:nth-child(odd) {
+	  background-color: #323C50;
+}
+
+/* Background-color of the even rows */
+tr:nth-child(even) {
+	  background-color: #2C3446;
+}
+
+form *{
+	padding:10px;
+	margin:10px;
+	display: block;
+	width: 95%;
+	color: white;
+	font-size: 20px;
+}
+
+form input {
+	color: black;
+}
+
+form label{
+	text-align: center;
+}
+
+form input::placeholder{
+	color: #AAAAAA;
+}
+
+form button {
+	background: rgba(255, 255, 255, 0.5);
+	border-radius:10px;
+	border-style: none;
+	margin-top:50px;
+}
+
+.buttonBox{
+	position: absolute;
+	margin: 0;
+	bottom: 0;
+	width:100%;
+}
+a {
+	background: rgba(255, 255, 255, 0.5);
+	border-radius:10px;
+	border-style: none;
+	margin:1px;
+	width: 49%;
+	height:50px;
+	line-height: 31px;
+	color: white;
+	font-size: 20px;
+	text-align: center;
+	text-decoration: none;
+	display:inline;
+	float:left;
+	margin-bottom: 5px;
+}
+
+a:hover, a:focus {
+	background: rgba(255, 255, 255, 0.3);
+	outline:5px solid white;
+}
