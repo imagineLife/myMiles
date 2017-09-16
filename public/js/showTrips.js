@@ -14,7 +14,10 @@ function getResFromAPI() {
 
     $.ajax(infoSettings)
     	.then(generateTableHTML)
-    	.catch((err)=>console.log(err));
+    	.catch((err)=>{
+    		console.log(err);
+    		window.location.href="/login";
+    	});
 }
 
 function generateTableHTML(data){
