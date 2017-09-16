@@ -41,9 +41,14 @@ app.use('/', tripsRouter);
 app.use('/register', (req,res) => {
   res.sendFile(path.resolve('public/register.html'));
 });
+
 app.use('/login', (req,res) => {
   req.logOut();
   res.sendFile(path.resolve('public/login.html'));
+})
+
+app.use('/add', (req,res) => {
+  res.sendFile(path.resolve('public/add.html'));
 })
 
 app.use('*', function(req, res) {
