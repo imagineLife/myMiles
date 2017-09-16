@@ -34,7 +34,7 @@ $("#form")
 	let objInputVal = {};
 
 	$('.form input').each(function() {
-		if( this.value == '') {
+		if( this.value == '') { return;
 	    }else{
 		    let inputKey = this.name;
 		    let inputVal = this.value;
