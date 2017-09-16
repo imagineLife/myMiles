@@ -9,12 +9,12 @@ function getResFromAPI() {
       dataType: 'json',
 	  beforeSend: req => {
 	    req.setRequestHeader('Authorization', 'Bearer ' + Cookies.get('authToken'));
-	  },
-	  success: generateTableHTML,
-      error: function(err) { console.log(err) },
+	  }
     };
 
-    $.ajax(infoSettings);
+    $.ajax(infoSettings)
+    	.then(generateTableHTML)
+    	.catch((err)=>console.log(err));
 }
 
 function generateTableHTML(data){
