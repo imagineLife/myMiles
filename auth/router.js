@@ -24,19 +24,11 @@ router.post('/login',
   }
 );
 
-router.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/login');
-});
-
 router.post('/refresh',
   // The user exchanges an existing valid JWT for a new one with a later
   // expiration
   passport.authenticate('jwt', {session: false}),
   (req, res) => {
-    console.log('*****RES IS\n',
-      res,
-      '\n*****');
     const authToken = createAuthToken(req.user);
     res.json({authToken});
   }
