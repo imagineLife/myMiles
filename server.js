@@ -29,13 +29,10 @@ app.use(function (req, res, next) {
 
 // app.use(flash());
 app.use(passport.initialize());
-// app.use(passport.session());
-// app.use(passport.authenticate('session'));
 passport.use(basicStrategy);
 passport.use(jwtStrategy);
 
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(__dirname +'/public'));
 app.use('/api/users', usersRouter);
 app.use('/api/auth', authRouter);
@@ -48,16 +45,6 @@ app.use('/login', (req,res) => {
   req.logOut();
   res.sendFile(path.resolve('public/login.html'));
 })
-
-// // A protected endpoint which needs a valid JWT to access it
-// app.get('/api/protected',
-//     passport.authenticate('jwt', {session: false}),
-//     (req, res) => {
-//         return res.json({
-//             data: 'rosebud'
-//         });
-//     }
-// );
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
