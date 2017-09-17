@@ -80,30 +80,30 @@ describe('Trips API resources page \n', () => {
 
 	describe('GET endpoint', function() {
 
-		it('should return all existing Trips', function() {
-			// strategy:
-			//    1. get back all Trips returned by by GET request to `/trips`
-			//    2. prove res has right status, data type
-			//    3. prove the number of Trips we got back is equal to number
-			//       in db.
-			//
-			// need to have access to mutate and access `res` across
-			// `.then()` calls below, so declare it here so can modify in place
-      // NOTE res, so that subsequent (.then) blocks can access the same /trips response obj (_res).
-			let res;
-			return chai.request(app)
-				.get('/api/trips')
-				.then(function(_res) {
-				  res = _res;
-				  res.should.have.status(200);
-				  // otherwise our db seeding didn't work
-				  res.body.should.have.lengthOf.at.least(1);
-				  return Trip.count();
-				})
-				.then(function(count) {
-					res.body.should.have.lengthOf(count);
-				});
-    	});
+		// it('should return all existing Trips', function() {
+		// 	// strategy:
+		// 	//    1. get back all Trips returned by by GET request to `/trips`
+		// 	//    2. prove res has right status, data type
+		// 	//    3. prove the number of Trips we got back is equal to number
+		// 	//       in db.
+		// 	//
+		// 	// need to have access to mutate and access `res` across
+		// 	// `.then()` calls below, so declare it here so can modify in place
+  //     // NOTE res, so that subsequent (.then) blocks can access the same /trips response obj (_res).
+		// 	let res;
+		// 	return chai.request(app)
+		// 		.get('/api/trips')
+		// 		.then(function(_res) {
+		// 		  res = _res;
+		// 		  res.should.have.status(200);
+		// 		  // otherwise our db seeding didn't work
+		// 		  res.body.should.have.lengthOf.at.least(1);
+		// 		  return Trip.count();
+		// 		})
+		// 		.then(function(count) {
+		// 			res.body.should.have.lengthOf(count);
+		// 		});
+  //   	});
 
 //NEW TEST, get trips of logged-in-user
     // it.only('should return all trips of a user', function() {
