@@ -26,7 +26,7 @@ router.post('/login',
 
 router.get('/add',
   // The user provides a username and password to login
-  passport.authenticate('basic', {session: false}),
+  passport.authenticate('jwt', {session: false}),
   (req, res) => {
     const authToken = createAuthToken(req.user, function(err,token){
       req.user.authToken = token;
