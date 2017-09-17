@@ -19,8 +19,14 @@ function getResFromAPI(searchVal) {
 	$.ajax(infoSettings);
 };
 
+function addUserIDToTrip(currentTrip){
+	let urlParams = (new URL(document.location)).searchParams;
+	let id = urlParams.get("id");
+	currentTrip.user = id;
+	console.log(currentTrip);
+}
+
 function parseFormInputs(){
-	let arrInputVals = [];
 	let objInputVal = {};
 
 	$('#form input').each(function() {
@@ -33,7 +39,8 @@ function parseFormInputs(){
 	    }
 	})
 
-	getResFromAPI(objInputVal);
+	addUserIDToTrip(objInputVal);
+	// getResFromAPI(objInputVal);
 }
 
 function validateCorrectInputCount(inputVals){
