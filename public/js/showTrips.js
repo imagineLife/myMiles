@@ -48,15 +48,13 @@ function displayTable(tBodyElem, rowsHTML, tTotalElem, totMiles){
 	tTotalElem.text(totMiles);
 }
 
-function redirect(user){
+function redirectToAdd(user){
 	Cookies.set('authToken', user.authToken);
-	console.log(Cookies.get('authToken'));
-	window.location='/trips?id='+user._id;
+	window.location='/add?id='+user._id;
 }
 
 function gainAccessToAddTrips(userID){
 	const addTripsURI = `/api/auth/add`;
-	//USE userID & pass it to addTrips?!
 
 	const infoSettings = {
 	    url: addTripsURI,
@@ -67,7 +65,7 @@ function gainAccessToAddTrips(userID){
   	};
 
 	$.ajax(infoSettings)
-		.then(console.log('got access to the api/auth/add!!'))
+		.then(redirectToAdd)
 		.catch((err)=>console.log(err));
 }
 
@@ -75,7 +73,6 @@ $('form')
 	.on('click', () => {
 		let idParam = (new URL(document.location)).searchParams;
 		let id = idParam.get("id");
-		console.log('userID is '+id);
 		gainAccessToAddTrips(id);
 	})
 
