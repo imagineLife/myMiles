@@ -22,19 +22,6 @@ router.get('/trips', (req, res) =>{
   res.sendFile(path.resolve('public/showTrips.html'));
 });
 
-router.get('/api/trips', (req, res) => {
-  Trip
-    .find()
-    .exec()
-    .then(trips => {
-      res.json(trips.map(trip => trip.apiRepr()));
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({error: 'something went terribly wrong'});
-    });
-});
-
 // A PROTECTED endpoint which needs a valid JWT to access it
 router.get('/api/trips/:id',
     passport.authenticate('jwt', {session: false}),
