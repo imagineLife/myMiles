@@ -48,4 +48,35 @@ function displayTable(tBodyElem, rowsHTML, tTotalElem, totMiles){
 	tTotalElem.text(totMiles);
 }
 
+function redirect(user){
+	Cookies.set('authToken', user.authToken);
+	console.log(Cookies.get('authToken'));
+	window.location='/trips?id='+user._id;
+}
+
+function gainAccessToAddTrips(userID){
+	const addTripsURI = `/api/auth/add`;
+	//USE userID & pass it to addTrips?!
+
+	const infoSettings = {
+	    url: addTripsURI,
+	    beforeSend: req => {
+			req.setRequestHeader('Authorization', 'Bearer ' + Cookies.get('authToken'));
+		},
+  	    contentType: 'application/json'
+  	};
+
+	$.ajax(infoSettings)
+		.then(console.log('got access to the api/auth/add!!'))
+		.catch((err)=>console.log(err));
+}
+
+$('form')
+	.on('click', () => {
+		let idParam = (new URL(document.location)).searchParams;
+		let id = idParam.get("id");
+		console.log('userID is '+id);
+		gainAccessToAddTrips(id);
+	})
+
 $(getResFromAPI);
