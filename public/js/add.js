@@ -1,11 +1,12 @@
 const postTripURI = `/add`;
 //send for and return the API serach results
-function sendUserHome(){
+function sendUserHome(trip){
 	console.log('it worked!');
-	window.location.href = '/';
+
+	// window.location.href = '/';
 }
 
-function getResFromAPI(searchVal) {
+function sendTripToAPI(searchVal) {
 
 	const infoSettings = {
 	    url: postTripURI,
@@ -24,6 +25,7 @@ function addUserIDToTrip(currentTrip){
 	let id = urlParams.get("id");
 	currentTrip.user = id;
 	console.log(currentTrip);
+	// sendTripToAPI(objInputVal);
 }
 
 function parseFormInputs(){
@@ -40,7 +42,6 @@ function parseFormInputs(){
 	})
 
 	addUserIDToTrip(objInputVal);
-	// getResFromAPI(objInputVal);
 }
 
 function validateCorrectInputCount(inputVals){
