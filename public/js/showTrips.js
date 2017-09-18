@@ -70,7 +70,9 @@ function gainAccessToAddTrips(userID){
 }
 
 $('form')
-	.on('click', () => {
+	.on('click', 'button', (ev) => {
+		ev.preventDefault();
+		console.log($(this).id);
 		let idParam = (new URL(document.location)).searchParams;
 		let id = idParam.get("id");
 		gainAccessToAddTrips(id);
