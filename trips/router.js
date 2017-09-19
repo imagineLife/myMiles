@@ -40,40 +40,42 @@ router.get('/api/trips',
     }
 );
 
-router.post('/api/trips', (req, res) => {
-  const requiredFields = ['milesTraveled', 'date', 'user'];
-  for (let i=0; i<requiredFields.length; i++) {
-    const field = requiredFields[i];
-    if (!(field in req.body)) {
-      const message = `Missing \`${field}\` in request body`
-      console.error(message);
-      return res.status(400).send(message);
+router.post('/api/trips',
+  passport.authenticate('jwt', {session: false, failWithError: true}),
+  (req, res) => {
+    const requiredFields = ['milesTraveled', 'date'];
+    for (let i=0; i<requiredFields.length; i++) {
+      const field = requiredFields[i];
+      if (!(field in req.body)) {
+        const message = `Missing \`${field}\` in request body`
+        console.error(message);
+        return res.status(400).send(message);
+      }
     }
-  }
 
-  Trip
-    .create({
-      milesTraveled: req.body.milesTraveled,
-      date: req.body.date,
-      user: req.body.user
-    })
-    .then(trip => {
-      let id = trip.user;      
-      User  
-        .findByIdAndUpdate(id,
-        { "$push": { "trips": trip._id } },
-        {"new" : true},
-        function(err, user){
-          console.log(user);
-        }
-      )
-    })
-    .then(trip => {res.status(201).json(trip.apiRepr()) })
-    .catch(err => {
-        console.error(err);
-        res.status(500).json({error: 'Something went wrong'});
-    });
-
+    Trip
+      .create({
+        milesTraveled: req.body.milesTraveled,
+        date: req.body.date,
+        user: req.user._id
+      })
+      .then(trip => {
+        let id = trip.user;      
+        User  
+          .findByIdAndUpdate(id,
+          { "$push": { "trips": trip._id } },
+          {"new" : true},
+          function(err, user){
+            console.log(user);
+          }
+        )
+        return trip;
+      })
+      .then(trip => {res.status(201).json(trip.apiRepr()) })
+      .catch(err => {
+          console.error(err);
+          res.status(500).json({error: 'Something went wrong'});
+      });
 });
 
 router.put('/api/trips/:id', (req, res) => {

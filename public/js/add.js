@@ -1,4 +1,4 @@
-const postTripURI = `/add`;
+const postTripURI = `/api/trips`;
 //send for and return the API serach results
 function showMyTrips(trip){
 	window.location.href = '/trips';
@@ -9,6 +9,9 @@ function sendTripToAPI(searchVal) {
 	const infoSettings = {
 	    url: postTripURI,
 	    type: 'POST',
+	    beforeSend: req => {
+	    	req.setRequestHeader('Authorization', 'Bearer ' + Cookies.get('authToken'));
+	  	},
 	    contentType: 'application/json',
 	    data: JSON.stringify(searchVal),  
 	    success: showMyTrips,
@@ -18,13 +21,6 @@ function sendTripToAPI(searchVal) {
 	$.ajax(infoSettings);
 };
 
-function addUserIDToTrip(currentTrip){
-	let urlParams = (new URL(document.location)).searchParams;
-	let id = urlParams.get("id");
-	currentTrip.user = id;
-	console.log(currentTrip);
-	sendTripToAPI(currentTrip);
-}
 
 function parseFormInputs(){
 	let objInputVal = {};
@@ -39,7 +35,7 @@ function parseFormInputs(){
 	    }
 	})
 
-	addUserIDToTrip(objInputVal);
+	sendTripToAPI(objInputVal);
 }
 
 function validateCorrectInputCount(inputVals){
