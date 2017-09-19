@@ -43,7 +43,8 @@ app.use('/register', (req,res) => {
 });
 
 app.use('/login', (req,res) => {
-  req.logOut();
+  req.logout();
+  res.clearCookie('authToken');
   res.sendFile(path.resolve('public/login.html'));
 })
 
