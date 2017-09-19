@@ -21,7 +21,7 @@
       
       <div class="buttonBox">
         <a href="/register">Sign Up</a>
-        <a href="/login">Login</a>
+        <a href="/login" class="login">Login</a>
       </div>
 
     </div>
@@ -33,6 +33,16 @@
         src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous">
+      </script>
+      <script type="text/javascript">
+        $(function(){
+          if(Cookies.get('authToken')){
+            $('.login')
+              .text('View Trips')
+              .attr('href', '/trips');
+          }
+          console.log(Cookies.get('authToken'));
+        })
       </script>
   </body>
 </html>
