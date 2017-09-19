@@ -1,7 +1,7 @@
 function redirect(user){
 	Cookies.set('authToken', user.authToken);
 	console.log(Cookies.get('authToken'));
-	window.location='/trips?id='+user._id;
+	window.location='/trips'
 }
 
 function logMeIn(userCredentials){

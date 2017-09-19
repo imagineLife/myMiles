@@ -1,11 +1,8 @@
 const getTripURI = `/api/trips/`;
 
 function getResFromAPI() {
-	let idParam = (new URL(document.location)).searchParams;
-	let id = idParam.get("id");
-
 	const infoSettings = {
-      url: getTripURI+id,  
+      url: getTripURI,  
       dataType: 'json',
 	  beforeSend: req => {
 	    req.setRequestHeader('Authorization', 'Bearer ' + Cookies.get('authToken'));
@@ -50,10 +47,10 @@ function displayTable(tBodyElem, rowsHTML, tTotalElem, totMiles){
 
 function redirectToAdd(user){
 	Cookies.set('authToken', user.authToken);
-	window.location='/add?id='+user._id;
+	window.location='/add'
 }
 
-function gainAccessToAddTrips(userID){
+function gainAccessToAddTrips(){
 	const addTripsURI = `/api/auth/add`;
 
 	const infoSettings = {
@@ -72,10 +69,7 @@ function gainAccessToAddTrips(userID){
 $('form')
 	.on('click', 'button', (ev) => {
 		ev.preventDefault();
-		console.log($(this).id);
-		let idParam = (new URL(document.location)).searchParams;
-		let id = idParam.get("id");
-		gainAccessToAddTrips(id);
+		gainAccessToAddTrips();
 	})
 
 $(getResFromAPI);

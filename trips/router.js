@@ -22,15 +22,17 @@ router.get('/trips', (req, res) =>{
   res.sendFile(path.resolve('public/showTrips.html'));
 });
 
+//GET trips by user-id :id
 // A PROTECTED endpoint which needs a valid JWT to access it
-router.get('/api/trips/:id',
+router.get('/api/trips',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
+        console.log(req.user._id);
           User
-          .findById(req.params.id)
+          .findById(req.user._id)
           .populate('trips')
           .exec()
-          .then(user => res.status(201).json(user.trips))    
+          .then(user => res.status(201).json(user.trips))
           .catch(err => {
             console.error(err);
             res.status(500).json({error: 'something went terribly wrong'});
@@ -39,7 +41,7 @@ router.get('/api/trips/:id',
 );
 
 router.post('/api/trips', (req, res) => {
-  const requiredFields = ['milesTraveled', 'date'];
+  const requiredFields = ['milesTraveled', 'date', 'user'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -52,9 +54,21 @@ router.post('/api/trips', (req, res) => {
   Trip
     .create({
       milesTraveled: req.body.milesTraveled,
-      date: req.body.date
+      date: req.body.date,
+      user: req.body.user
     })
-    .then(trip => res.status(201).json(trip.apiRepr()))
+    .then(trip => {
+      let id = trip.user;      
+      User  
+        .findByIdAndUpdate(id,
+        { "$push": { "trips": trip._id } },
+        {"new" : true},
+        function(err, user){
+          console.log(user);
+        }
+      )
+    })
+    .then(trip => {res.status(201).json(trip.apiRepr()) })
     .catch(err => {
         console.error(err);
         res.status(500).json({error: 'Something went wrong'});

@@ -47,7 +47,8 @@ function seedTripData() {
 function generateTripData() {
   return {
     milesTraveled: parseInt(faker.helpers.replaceSymbolWithNumber('#'),10),
-    date: faker.date.past()
+    date: faker.date.past(),
+    user: '59b33583d89da114036d8b2e'
   }
 }
 
@@ -128,13 +129,21 @@ describe('Trips API resources page \n', () => {
 		      res.should.be.json;
 		      res.body.should.be.a('object');
 		      res.body.should.include.keys(
-		        'milesTraveled', 'date');
+            'milesTraveled', 'date', 'user', 'id');
+            // 'milesTraveled', 'date', 'id');
 		      normalizeResDate(res.body.date).should.equal(normalizeDbDate(newTrip.date));
 		      // cause Mongo should have created id on insertion
 		      res.body.id.should.not.be.null;
 		      res.body.milesTraveled.should.equal(newTrip.milesTraveled);
+          console.log('added trip to trips table');
 		      return Trip.findById(res.body.id);
 		    })
+        .then((trip) => {
+          let tripUser = trip.user;
+          let tripID = trip._id;
+          console.log('*** Trip userID is ',tripUser, 'and TRIP id is ',tripID);
+          return trip;
+        })
 		    .then(function(trip) {
 		      const representedTrip = trip.apiRepr();
 		      normalizeResDate(representedTrip.date).should.equal(normalizeResDate(newTrip.date));
