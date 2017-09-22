@@ -9,6 +9,8 @@
   </head>
   <body>
 
+  <a href="#" onClick ="$('.trip-table').tableExport({type:'excel',escape:'false'});">Export Trips</a>
+
     <table class="trip-table row">
       <caption>Trips Logged</caption>
       <thead>
@@ -29,19 +31,25 @@
 
     <form>
       <div class="buttonBox">
-        <button type="button">Save New Trip</button>
-        <a href="/login">Logout</a>
+        
+        <button type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+        <a href="/login"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
       </div>
     </form>
+
 
     <script 
       src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js">
     </script>
-    <script 
+     <script 
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous">
     </script>
+    <script src="https://use.fontawesome.com/23356404e0.js"></script>    
     <script src="js/showTrips.js"></script>
+    <script type="text/javascript" src="fileSaver.js"></script>
+    <script type="text/javascript" src="tableexport.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Base64/1.0.1/base64.min.js"></script>
   </body>
 </html>
