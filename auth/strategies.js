@@ -12,6 +12,7 @@ const {User} = require('../users/models');
 const {JWT_SECRET} = require('../config');
 
 const basicStrategy = new BasicStrategy((username, password, callback) => {
+  console.log('***BASIC strategy, ', username);
   let user;
   User
     .findOne({username: username})

@@ -41,6 +41,15 @@ function seedTripData() {
   return Trip.insertMany(seedData);
 }
 
+
+function seedUserData() {
+  console.info('seeding User data');
+  const seedData = [];
+  seedData.push(generateUserData());
+  // this will return a promise
+  return User.insertMany(seedData);
+}
+
 // generate an object represnting a Trip.
 // can be used to generate seed data for db
 // or request.body data
@@ -48,7 +57,16 @@ function generateTripData() {
   return {
     milesTraveled: parseInt(faker.helpers.replaceSymbolWithNumber('#'),10),
     date: faker.date.past(),
-    user: '59b33583d89da114036d8b2e'
+    // user: '59b33583d89da114036d8b2e'
+  }
+}
+
+function generateUserData(){
+  return {
+    firstName : "testFirstGoesHere",
+    lastName: "testLastGoesHere",
+    username: "testUsernameGoesHere",
+    password: "$2a$10$O4zYhxYd/9aKUfQg6M9y2e48kXA/W3Tu24TePZ/9NdqCvtLbnm76S"
   }
 }
 
@@ -56,22 +74,60 @@ function generateTripData() {
 // we'll call it in an `afterEach` block below
 // to ensure  ata from one test does not stick
 // around for next one
+var newUser;
+
 function tearDownDb() {
     console.warn('Deleting database');
     return mongoose.connection.dropDatabase();
 }
 
+function createCredentials(){
+  const loginCredentials = {
+    username: "testUsernameGoesHere",
+    password: "ReadyToDie"
+  };
+  return loginCredentials;
+}
+
+
 describe('Trips API resources page \n', () => {
+
+  var curUser;
 
 	before(function() {
 		return runServer(TEST_DATABASE_URL, 8081);
 	});
 
-	beforeEach(function() {
-		return seedTripData();
-	});
+	beforeEach(function(done) {
+    
+    seedUserData();
+    // seedTripData();
+	  // newUser = await createCredentials();
+   //  return newUser;
+    seedTripData();
+
+
+   const test = chai.request(app)
+   .post('/api/auth/login')
+      .set('Authorization','Basic dGVzdFVzZXJuYW1lR29lc0hlcmU6UmVhZHlUb0RpZQ==')
+      .send(createCredentials())
+      .then((data) => {
+        User
+          .findOne({"username": "testUsernameGoesHere"})
+          .then((user)=> {
+            user.authToken = data.body.authToken;
+            curUser = user;
+            console.log('curUser is ',curUser);
+            done();
+            return user;
+          })
+      });
+      console.log('**TEST  ',test);
+      return test;
+  });
 
 	afterEach(function() {
+    // curUser = {};
 		return tearDownDb();
 	});
 
@@ -81,36 +137,28 @@ describe('Trips API resources page \n', () => {
 
 	describe('GET endpoint', function() {
 
-		// it('should return all existing Trips', function() {
-		// 	// strategy:
-		// 	//    1. get back all Trips returned by by GET request to `/trips`
-		// 	//    2. prove res has right status, data type
-		// 	//    3. prove the number of Trips we got back is equal to number
-		// 	//       in db.
-		// 	//
-		// 	// need to have access to mutate and access `res` across
-		// 	// `.then()` calls below, so declare it here so can modify in place
-  //     // NOTE res, so that subsequent (.then) blocks can access the same /trips response obj (_res).
-		// 	let res;
-		// 	return chai.request(app)
-		// 		.get('/api/trips')
-		// 		.then(function(_res) {
-		// 		  res = _res;
-		// 		  res.should.have.status(200);
-		// 		  // otherwise our db seeding didn't work
-		// 		  res.body.should.have.lengthOf.at.least(1);
-		// 		  return Trip.count();
-		// 		})
-		// 		.then(function(count) {
-		// 			res.body.should.have.lengthOf(count);
-		// 		});
-  //   	});
+//get trips of logged-in-user
+    it.only('should return all trips of a user', function() {
+      console.log('***GET,',curUser);
+      // curUser.should.eventually.have.key('authToken');
 
-//NEW TEST, get trips of logged-in-user
-    // it.only('should return all trips of a user', function() {
-      
-    // });
-  });
+      // return chai.request(app)
+      //  .post('/api/auth/login')
+      //     .set('Authorization','Basic dGVzdFVzZXJuYW1lR29lc0hlcmU6UmVhZHlUb0RpZQ==')
+      //     .send(createCredentials())
+      //     .then((data) => {
+      //       // console.log(data.body.authToken);
+      //       User
+      //         .findOne({"username": "testUsernameGoesHere"})
+      //       .then((user)=> {
+      //         user.authToken = data.body.authToken;
+      //         console.log(user);
+      //         return user.authToken;
+      //       })
+      //     });
+    })
+
+  })
 
 	describe('POST endpoint', function() {
 		// strategy: make a POST request with data,
@@ -119,36 +167,36 @@ describe('Trips API resources page \n', () => {
 		// the data was inserted into db)
 		it('should add a new trip', function() {
 
-		  const newTrip = generateTripData();
+      const newTrip = generateTripData();
 
-		  return chai.request(app)
-		    .post('/api/trips')
-		    .send(newTrip)
-		    .then(function(res) {
-		      res.should.have.status(201);
-		      res.should.be.json;
-		      res.body.should.be.a('object');
-		      res.body.should.include.keys(
-            'milesTraveled', 'date', 'user', 'id');
-            // 'milesTraveled', 'date', 'id');
-		      normalizeResDate(res.body.date).should.equal(normalizeDbDate(newTrip.date));
-		      // cause Mongo should have created id on insertion
-		      res.body.id.should.not.be.null;
-		      res.body.milesTraveled.should.equal(newTrip.milesTraveled);
-          console.log('added trip to trips table');
-		      return Trip.findById(res.body.id);
-		    })
-        .then((trip) => {
-          let tripUser = trip.user;
-          let tripID = trip._id;
-          console.log('*** Trip userID is ',tripUser, 'and TRIP id is ',tripID);
-          return trip;
-        })
-		    .then(function(trip) {
-		      const representedTrip = trip.apiRepr();
-		      normalizeResDate(representedTrip.date).should.equal(normalizeResDate(newTrip.date));
-		      representedTrip.milesTraveled.should.equal(newTrip.milesTraveled);
-		    });
+		  // return chai.request(app)
+		  //   .post('/api/trips')
+		  //   .send(newTrip)
+		  //   .then(function(res) {
+		  //     res.should.have.status(201);
+		  //     res.should.be.json;
+		  //     res.body.should.be.a('object');
+		  //     res.body.should.include.keys(
+    //         'milesTraveled', 'date', 'user', 'id');
+    //         // 'milesTraveled', 'date', 'id');
+		  //     normalizeResDate(res.body.date).should.equal(normalizeDbDate(newTrip.date));
+		  //     // cause Mongo should have created id on insertion
+		  //     res.body.id.should.not.be.null;
+		  //     res.body.milesTraveled.should.equal(newTrip.milesTraveled);
+    //       console.log('added trip to trips table');
+		  //     return Trip.findById(res.body.id);
+		  //   })
+    //     .then((trip) => {
+    //       let tripUser = trip.user;
+    //       let tripID = trip._id;
+    //       console.log('*** Trip userID is ',tripUser, 'and TRIP id is ',tripID);
+    //       return trip;
+    //     })
+		  //   .then(function(trip) {
+		  //     const representedTrip = trip.apiRepr();
+		  //     normalizeResDate(representedTrip.date).should.equal(normalizeResDate(newTrip.date));
+		  //     representedTrip.milesTraveled.should.equal(newTrip.milesTraveled);
+		  //   });
 		});
 	});
 
