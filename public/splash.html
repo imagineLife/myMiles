@@ -19,10 +19,12 @@
         <p>Have mileage logs when you need them.</p>
       </div>
       
-      <div class="buttonBox">
-        <a href="/register">Sign Up</a>
-        <a href="/login" class="login">...</a>
-      </div>
+      <form>
+        <div class="buttonBox">
+          <a href="/register"><i class="fa fa-floppy-o" aria-hidden="true"> Register</i></a>
+          <a href="/login"><i class="fa fa-sign-out" aria-hidden="true"> Login/View Trips</i></a>
+        </div>
+      </form>
 
     </div>
 
@@ -34,19 +36,7 @@
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous">
       </script>
-      <script type="text/javascript">
-        $(function(){
-          if(Cookies.get('authToken')){
-            $('.login')
-              .text('View Trips')
-              .attr('href', '/trips');
-          }else{
-            $('.login')
-              .text('Login')
-              .attr('href', '/trips');
-          }
-          console.log(Cookies.get('authToken'));
-        })
-      </script>
+      <script src="https://use.fontawesome.com/23356404e0.js"></script>    
+     <script src="js/splash.js"></script>
   </body>
 </html>

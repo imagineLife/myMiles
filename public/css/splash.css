@@ -33,22 +33,26 @@ p {
 	margin-top:0;
 }
 
-.buttonBox{
-	bottom:0;
-	position: absolute;
-	width:100%;
-	padding:10px;
+form *{
+	/*padding:10px;*/
+	display: block;
+	width: 95%;
+	color: white;
 }
 
-a {
+.buttonBox{
+	position: absolute;
+	bottom: 0;
+	width:100%;
+	left:0;
+}
+
+.buttonBox > * {
 	background: rgba(255, 255, 255, 0.5);
-	border-radius:10px;
 	border-style: none;
-	padding:10px;
-	margin:1px;
-	width: 49%;
+	width: 50%;
 	height:50px;
-	line-height: 31px;
+	line-height: 50px;
 	color: white;
 	font-size: 20px;
 	text-align: center;
@@ -59,5 +63,19 @@ a {
 
 a:hover, a:focus {
 	background: rgba(255, 255, 255, 0.3);
-	outline:5px solid white;
+	border:2px solid white;
+}
+
+button:hover, button:focus {
+	background: rgba(255, 255, 255, 0.3);
+	border:2px solid white;
+}
+
+button{
+	border-right:solid white 1px;
+}
+
+.fa.fa-floppy-o{
+	font-size:20px;
+	line-height: 50px;
 }
