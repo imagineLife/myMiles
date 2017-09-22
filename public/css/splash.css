@@ -33,13 +33,6 @@ p {
 	margin-top:0;
 }
 
-form *{
-	/*padding:10px;*/
-	display: block;
-	width: 95%;
-	color: white;
-}
-
 .buttonBox{
 	position: absolute;
 	bottom: 0;
@@ -49,6 +42,7 @@ form *{
 
 .buttonBox > * {
 	background: rgba(255, 255, 255, 0.5);
+	font: normal normal normal 14px/1 FontAwesome;
 	border-style: none;
 	width: 50%;
 	height:50px;
@@ -59,6 +53,19 @@ form *{
 	text-decoration: none;
 	display:inline;
 	float:left;
+}
+
+.buttonBox a img{
+	height: 30px;
+	width:30px;
+	display:inline;
+	line-height:50px;
+    margin-top: 10px;
+    margin-bottom: -6px;
+}
+
+.buttonBox a i{
+	display:inline;
 }
 
 a:hover, a:focus {
