@@ -4,29 +4,34 @@
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width">
   	<link rel="stylesheet" type="text/css" href="css/showTrips.css">
+    <link rel="stylesheet" type="text/css" href="css/respond.css">
   	<title>TripTracker</title>
   </head>
   <body>
 
-  <a href="#" class="export" onClick ="$('.trip-table').tableExport({type:'excel',escape:'false'});">Export Trips</a>
+    <div class="textWrapper">
 
-    <table class="trip-table row">
-      <caption>Trips Logged</caption>
-      <thead>
-        <tr>
-          <th scope="col">Date</th>
-          <th scope="col">Distance</th>
-        </tr>
-      </thead>
-      <tfoot>
-        <tr>
-          <td>TOTAL</td>
-          <td class="trip-table-total-miles"></td>
-        </tr>
-      </tfoot>
-      <tbody class="trip-table-body">
-      </tbody>
-    </table>
+      <a href="#" class="export" onClick ="$('.trip-table').tableExport({type:'excel',escape:'false'});">Export Trips</a>
+
+      <table class="trip-table">
+        <caption>Trips Logged</caption>
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Distance</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td>TOTAL</td>
+            <td class="trip-table-total-miles"></td>
+          </tr>
+        </tfoot>
+        <tbody class="trip-table-body">
+        </tbody>
+      </table>
+
+    </div> 
 
     <form>
       <div class="buttonBox">

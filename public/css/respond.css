@@ -44,6 +44,24 @@
     font-size:25px;
   }
 
+  .trip-table{
+    margin-top:15%;
+    padding:0 15px;
+  }
+
+  .trip-table > *{
+    font-size: 30px;
+  }
+
+  tbody td {
+    padding: 10px;
+  }
+
+  .export{
+    padding:20px;
+    font-size:20px;
+  }
+
 }
 
 /* Desktops and laptops ----------- */
