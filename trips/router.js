@@ -27,10 +27,9 @@ router.get('/trips', (req, res) =>{
 router.get('/api/trips',
     passport.authenticate('jwt', {session: false}),
     (req, res) => {
-        console.log(req.user._id);
           User
           .findById(req.user._id)
-          .populate('trips')
+          .populate({path: 'trips', options: { sort: { 'date': -1 } }})
           .exec()
           .then(user => res.status(201).json(user.trips))
           .catch(err => {
