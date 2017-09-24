@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" href="/css/register.css">
-    <link rel="stylesheet" href="/css/float-grid.css" />
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/respond.css">
     <title>TripTracker</title>
   </head>
   <body>
@@ -21,9 +21,14 @@
 
       <div class="buttonBox">
 
-        <button type="reset">Reset</button>
+        <button type="reset">
+            <img src="imgs/reset.png" alt="Reset Form">
+            <i class='reset'>Reset</i>
+        </button>
 
-        <button type="submit" id="login" class="login">Login</button>
+        <button type="submit" id="login" class="login">
+          <i class="fa fa-sign-out" aria-hidden="true"> Login</i>
+        </button>
 
       </div>
    
@@ -38,6 +43,7 @@
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous">
     </script>
+    <script src="https://use.fontawesome.com/23356404e0.js"></script>    
     <script src="/js/login.js"></script>
   </body>
 </html>

@@ -5,6 +5,7 @@
 body{
 	background-color:black;
 	width: 100%;
+	margin:0px;
 }
 
 h1, p{
@@ -36,7 +37,6 @@ form input::placeholder{
 
 .buttonBox {
 	position: absolute;
-	bottom: 0;
 	width:100%;
 	left:0;
 	right:0;

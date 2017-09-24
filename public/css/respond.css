@@ -1,0 +1,56 @@
+/*mid-size screens*/
+@media only screen  and (min-width : 600px) {
+
+  .textWrapper{
+    display:inline;
+    width:75%;
+    float:left;
+  }
+
+  .explanation p{
+    font-size: 30px;
+  }
+
+  .form{
+    display:inline;
+    width:74%;
+    float:left;
+    margin-top:25%;
+  }
+
+  .form > * {
+    font-size:25px;
+    width:100%;
+  }
+
+  .buttonBox {
+    width:24%;
+    height:100vh;
+    display:inline;
+    top: 0;
+    right:0;
+    float:right;
+    position:absolute;
+    left:auto;
+    bottom:auto;
+  }
+
+  .buttonBox > *{
+    width:100%;
+    display:block;
+    height:50%;
+    float:right;
+    padding: 250px 10px;
+    font-size:25px;
+  }
+
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1000px) {
+
+  .explanation{
+    margin-top:15%;
+  }
+
+}

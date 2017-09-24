@@ -3,13 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" href="css/float-grid.css" />
+    <link rel="stylesheet" href="/css/add.css">
     <title>TripTracker</title>
   </head>
   <body>
 
-    <form action="#" id="form">
+    <form action="#" id="form" class="form">
     
       <label for="milesTraveled">Distance
         <input type="number" name="milesTraveled" id="milesTraveled" step="1" min="0" max="50" placeholder="7">
@@ -19,9 +18,16 @@
         <input type="text" name="date" id="date" placeholder="2017-08-21">
       </label>
 
-      <button type="reset">Reset</button>
+      <div class="buttonBox">
 
-      <button type="submit" id="submit">Add Trip</button>
+        <button type="reset">
+            <img src="imgs/reset.png" alt="Reset Form">
+            <i class='reset'>Reset</i>
+        </button>
+
+        <button type="submit" id="submit">Add Trip</button>
+      
+      </div>
 
     </form>
 

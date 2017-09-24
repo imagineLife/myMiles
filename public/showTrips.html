@@ -4,12 +4,11 @@
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width">
   	<link rel="stylesheet" type="text/css" href="css/showTrips.css">
-  	<link rel="stylesheet" href="css/float-grid.css" />
   	<title>TripTracker</title>
   </head>
   <body>
 
-  <a href="#" onClick ="$('.trip-table').tableExport({type:'excel',escape:'false'});">Export Trips</a>
+  <a href="#" class="export" onClick ="$('.trip-table').tableExport({type:'excel',escape:'false'});">Export Trips</a>
 
     <table class="trip-table row">
       <caption>Trips Logged</caption>
@@ -31,8 +30,13 @@
 
     <form>
       <div class="buttonBox">
-        <button type="button"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-        <a href="/login"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+        <button type="button">
+          <img src="imgs/road.png" class="roadPic" alt="Add New Trip">
+          <label>New Trip</lable>
+        </button>
+        <a href="/login">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+        </a>
       </div>
     </form>
 
