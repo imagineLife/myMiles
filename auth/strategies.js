@@ -12,7 +12,6 @@ const {User} = require('../users/models');
 const {JWT_SECRET} = require('../config');
 
 const basicStrategy = new BasicStrategy((username, password, callback) => {
-  console.log('***BASIC strategy, ', username);
   let user;
   User
     .findOne({username: username})
@@ -53,8 +52,6 @@ const jwtStrategy = new JwtStrategy({
     algorithms: ['HS256']
   },
   (payload, done) => {
-    console.log('**PAyload = ',payload);
-    console.log('**DONE = ',done);
     done(null, payload.user)
   }
 );
