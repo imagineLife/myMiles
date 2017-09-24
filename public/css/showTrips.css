@@ -136,3 +136,10 @@ button label{
 	font-size:20px;
 	line-height: 50px;
 }
+
+.button-default{
+	padding:10px;
+	border:none;
+	color:white;
+	font-size:10px;
+}
