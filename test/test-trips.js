@@ -106,7 +106,6 @@ describe('Trips API resources page \n', () => {
    //  return newUser;
     seedTripData();
 
-
    const test = chai.request(app)
    .post('/api/auth/login')
       .set('Authorization','Basic dGVzdFVzZXJuYW1lR29lc0hlcmU6UmVhZHlUb0RpZQ==')
@@ -117,17 +116,12 @@ describe('Trips API resources page \n', () => {
           .then((user)=> {
             user.authToken = data.body.authToken;
             curUser = user;
-            console.log('curUser is ',curUser);
             done();
-            return user;
           })
       });
-      console.log('**TEST  ',test);
-      return test;
   });
 
 	afterEach(function() {
-    // curUser = {};
 		return tearDownDb();
 	});
 
@@ -138,24 +132,13 @@ describe('Trips API resources page \n', () => {
 	describe('GET endpoint', function() {
 
 //get trips of logged-in-user
-    it.only('should return all trips of a user', function() {
+    it('should return all trips of a user', function() {
       console.log('***GET,',curUser);
-      // curUser.should.eventually.have.key('authToken');
-
-      // return chai.request(app)
-      //  .post('/api/auth/login')
-      //     .set('Authorization','Basic dGVzdFVzZXJuYW1lR29lc0hlcmU6UmVhZHlUb0RpZQ==')
-      //     .send(createCredentials())
-      //     .then((data) => {
-      //       // console.log(data.body.authToken);
-      //       User
-      //         .findOne({"username": "testUsernameGoesHere"})
-      //       .then((user)=> {
-      //         user.authToken = data.body.authToken;
-      //         console.log(user);
-      //         return user.authToken;
-      //       })
-      //     });
+        const test = chai.request(app)
+        .get('/trips')
+        .then((res)=>{
+          res.unauthorized.should.equal(false);
+        });
     })
 
   })
@@ -166,8 +149,15 @@ describe('Trips API resources page \n', () => {
 		// right keys, and that `id` is there (which means
 		// the data was inserted into db)
 		it('should add a new trip', function() {
+      console.log('***POST,',curUser);
 
       const newTrip = generateTripData();
+
+      const test = chai.request(app)
+      .get('/add')
+      .then((res)=>{
+        res.unauthorized.should.equal(false);
+      });
 
 		  // return chai.request(app)
 		  //   .post('/api/trips')
@@ -180,7 +170,7 @@ describe('Trips API resources page \n', () => {
     //         'milesTraveled', 'date', 'user', 'id');
     //         // 'milesTraveled', 'date', 'id');
 		  //     normalizeResDate(res.body.date).should.equal(normalizeDbDate(newTrip.date));
-		  //     // cause Mongo should have created id on insertion
+		  //     // Mongo should have created id on insertion
 		  //     res.body.id.should.not.be.null;
 		  //     res.body.milesTraveled.should.equal(newTrip.milesTraveled);
     //       console.log('added trip to trips table');
