@@ -1,5 +1,6 @@
 function tellMeItWorks(){
 	console.log('Worked!!');
+	window.location.href = '/login';
 }
 
 function getResFromAPI(obj){
