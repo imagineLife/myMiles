@@ -48,6 +48,12 @@ app.use('/login', (req,res) => {
   res.sendFile(path.resolve('public/login.html'));
 })
 
+app.use('/logout', (req,res) => {
+  req.logout();
+  res.clearCookie('authToken');
+  res.sendFile(path.resolve('public/splash.html'));
+})
+
 app.use('/add', (req,res) => {
   res.sendFile(path.resolve('public/add.html'));
 })
