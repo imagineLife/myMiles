@@ -88,9 +88,22 @@ button img{
 	display:inline;
 }
 
+p{
+	display:inline;
+}
+
+#demoContent *{
+	display:inline;
+	margin: 0;
+}
+
+#demoButton{
+	width:100px;
+	display:inline;
+	background-color: gray;
+}
+
 .fa {
-	/*font-size:20px;*/
-	/*line-height: 50px;*/
 	padding:0;
 	margin:0;
 	display:inline;
