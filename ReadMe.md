@@ -19,7 +19,6 @@ This web-app is a quick-and-easy mileage tracker designed to host a centralized 
 <br />
 
 ###### Front-End 
-<br />
 **Motivation**<br />
 **HTML**<br />
 **CSS**<br />
@@ -27,7 +26,6 @@ This web-app is a quick-and-easy mileage tracker designed to host a centralized 
 **jQuery**<br />
 
 ###### Middleware & Backend 
-<br />
 -**Node**<br />
 -**Express**<br />
 -**Passport**<br />
