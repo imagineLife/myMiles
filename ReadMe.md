@@ -28,8 +28,8 @@ This web-app is a quick-and-easy mileage tracker designed to host a centralized 
 
 Middleware & Backend 
 <br />
-**Node**<br />
-**Express**<br />
-**Passport**<br />
-**Mongodb**<br />
-**Mongoose**<br />
+-**Node**<br />
+-**Express**<br />
+-**Passport**<br />
+-**Mongodb**<br />
+-**Mongoose**<br />
