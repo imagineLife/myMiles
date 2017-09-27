@@ -15,19 +15,16 @@ Independant contractors can use their gas-milegae and car-expenses for their tax
 This web-app is a quick-and-easy mileage tracker designed to host a centralized source for business-related trips taken in a vehicle.
 <br />
 
-##Technology Used 
-<br />
-
+## Technology Used 
 ###### Front-End 
 **Motivation**<br />
 **HTML**<br />
 **CSS**<br />
 **JavaScript**<br />
 **jQuery**<br />
-
 ###### Middleware & Backend 
--**Node**<br />
--**Express**<br />
--**Passport**<br />
--**Mongodb**<br />
--**Mongoose**<br />
+**Node**<br />
+**Express**<br />
+**Passport**<br />
+**Mongodb**<br />
+**Mongoose**<br />
