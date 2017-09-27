@@ -64,3 +64,12 @@ $("#form")
 	    validateCorrectInputCount(inputVals);
 
 	})
+
+$(document).ready(()=>{
+	let newDate = new Date();
+	let day = (newDate.getDate() < 10 ? ('0'+newDate.getDate()) : newDate.getDate());
+	let month = ((newDate.getMonth() + 1) < 10 ? ('0'+(newDate.getMonth() + 1)) : (newDate.getMonth() + 1));
+	let year = (newDate.getFullYear() < 10 ? ('0'+newDate.getFullYear()) : newDate.getFullYear());
+
+	$('#date').val(year+'-'+month+'-'+day);
+})
