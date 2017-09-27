@@ -56,7 +56,7 @@ function seedUserData() {
 function generateTripData() {
   return {
     milesTraveled: parseInt(faker.helpers.replaceSymbolWithNumber('#'),10),
-    date: faker.date.past(),
+    date: faker.date.past()
     // user: '59b33583d89da114036d8b2e'
   }
 }
