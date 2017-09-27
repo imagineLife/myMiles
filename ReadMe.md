@@ -7,7 +7,7 @@
 This is for tracking mileage for trips taken on behalf of work.
 
 This answers questions like :<br /><br />
-*'How many Miles did I travel for work this month?'*
+*'How many Miles did I travel for work this month?'*<br />
 *'Can I get a printed log of the trips I have traveled for work?'*<br /><br />
 
 **Motivation**<br />
