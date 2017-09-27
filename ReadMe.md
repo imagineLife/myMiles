@@ -1,8 +1,7 @@
-## MacroFinder
-![Alt text](startingOut.jpg?raw=true "Starting Out")
-![Alt text](uiInProcess.jpg?raw=true "Searching")
-![Alt text](searchResults.jpg?raw=true "Search Results")
-![Alt text](previewingMacros.jpg?raw=true "Previewing Macros")
+## TrackMyTrips
+![Alt text](splash.jpg?raw=true "Starting Out")
+![Alt text](viewTrips.jpg?raw=true "View Trips")
+![Alt text](add.jpg?raw=true "Add Trips")
 
 ## Summary
 This is for tracking mileage for trips taken on behalf of work.
