@@ -45,3 +45,11 @@ $("#form")
 
 	logMeIn(objInputVal);
 	})
+
+$('#demoButton')
+	.on('click', (ev)=>{
+		console.log('clicked!');
+		$('#username').val('demoUser');
+		$('#password').val('DemoUserPassword');
+		$('#form').submit();
+	})
