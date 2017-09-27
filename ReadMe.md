@@ -6,12 +6,12 @@
 ## Summary
 This is for tracking mileage for trips taken on behalf of work.
 
-This answers questions like :<br /><br />
+This answers questions like :
 *'How many Miles did I travel for work this month?'*<br />
 *'Can I get a printed log of the trips I have traveled for work?'*<br /><br />
 
 **Motivation**<br />
-Independant contractors can use their gas-milegae and car-expenses for their taxes. <br />
+Independant contractors can use their gas-milegae and car-expenses for tax purposes. Keeping track of these expenses can be difficult, time-consuming, and laborious.<br />
 This web-app is a quick-and-easy mileage tracker designed to host a centralized source for business-related trips taken in a vehicle.
 <br />
 
