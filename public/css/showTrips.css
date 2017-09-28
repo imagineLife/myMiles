@@ -34,7 +34,6 @@ tr:nth-child(even) {
 }
 
 form *{
-	/*padding:10px;*/
 	display: block;
 	width: 100%;
 	color: white;

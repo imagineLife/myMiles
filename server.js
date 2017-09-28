@@ -27,7 +27,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-// app.use(flash());
 app.use(passport.initialize());
 passport.use(basicStrategy);
 passport.use(jwtStrategy);

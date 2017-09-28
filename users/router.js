@@ -10,9 +10,7 @@ const jsonParser = bodyParser.json();
 
 // Post to register a new user
 router.post('/', jsonParser, (req, res) => {
-  /*
-    ensure that uName & pWord are defined
-  */
+  // ensure that uName & pWord are defined
   const requiredFields = ['username', 'password'];
   const missingField = requiredFields.find(field => !(field in req.body));
 
@@ -24,9 +22,8 @@ router.post('/', jsonParser, (req, res) => {
       location: missingField
     });
   }
-  /*
-    ensure that uName & pWord are defined
-  */
+
+  // ensure that uName & pWord are defined
   const stringFields = ['username', 'password', 'firstName', 'lastName'];
   const nonStringField = stringFields.find(field =>
     (field in req.body) && typeof req.body[field] !== 'string'
