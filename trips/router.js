@@ -63,7 +63,10 @@ router.post('/api/trips',
         User  
           .findByIdAndUpdate(id,
           { "$push": { "trips": trip._id } },
-          {"new" : true}
+          {"new" : true},
+          function(err,user){
+            console.log(user);
+          }
         )
         return trip;
       })
