@@ -8,12 +8,6 @@ body{
 	margin:0;
 }
 
-h1, p{
-	color: white;
-	text-align: center;
-	font-size: 35px;
-}
-
 form *{
 	padding:10px;
 	margin:10px;
@@ -21,6 +15,12 @@ form *{
 	width: 95%;
 	color: white;
 	font-size: 20px;
+}
+
+h1, p{
+	color: white;
+	text-align: center;
+	font-size: 35px;
 }
 
 form *:focus{

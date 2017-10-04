@@ -59,8 +59,8 @@ caption {
     display: table-caption;
     text-align: -webkit-center;
     width:auto;
-    margin-left:auto;
-    margin-right:auto;
+    margin:25px 0;
+    font-size: 30px;
 }
 
 .buttonBox{
