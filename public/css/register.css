@@ -5,6 +5,7 @@
 body{
 	background-color:black;
 	width: 100%;
+	margin:0;
 }
 
 h1, p{
@@ -34,24 +35,22 @@ form input::placeholder{
 	color: #AAAAAA;
 }
 
-.buttonBox {
+.buttonBox{
+	padding: 0;
+	margin:0;
+	display: inline;
 	position: absolute;
 	bottom: 0;
 	width:100%;
 	left:0;
-	right:0;
-	bottom:0;
-	padding:0px;
-	margin:0px;
-	display: inline;
 }
 
 .buttonBox > * {
+	padding:0;
+	margin:0;
 	background: rgba(255, 255, 255, 0.5);
 	font: normal normal normal 14px/1 FontAwesome;
 	border-style: none;
-	padding:0px;
-	margin:0px;
 	width: 50%;
 	height:50px;
 	line-height: 50px;
@@ -61,6 +60,19 @@ form input::placeholder{
 	text-decoration: none;
 	display:inline;
 	float:left;
+}
+
+.buttonBox a img{
+	height: 22px;
+	width:22px;
+	display:inline;
+	line-height:50px;
+    margin-top: 10px;
+    margin-bottom: -5px;
+}
+
+.buttonBox a i{
+	display:inline;
 }
 
 button:hover, button:focus {
@@ -74,6 +86,21 @@ button img{
 	height: 20px;
 	width:20px;
 	display:inline;
+}
+
+p{
+	display:inline;
+}
+
+#demoContent *{
+	display:inline;
+	margin: 0;
+}
+
+#demoButton{
+	width:100px;
+	display:inline;
+	background-color: gray;
 }
 
 .fa {
