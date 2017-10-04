@@ -24,17 +24,21 @@ body{
 h1, p{
 	color: white;
 	text-align: center;
-	font-size: 35px;
+}
+
+h1{
+	font-size:35px;
+	margin: 50px 0;
 }
 
 .explanation{
-	margin-top:35%;
+	/*margin-top:35%;*/
     padding: 0 10px 0 10px;
 }
 
 p {
 	font-size: 22px;
-	margin-bottom:50px;
+	line-height: 130%;
 	margin-top:0;
 }
 
@@ -75,12 +79,12 @@ p {
 
 a:hover, a:focus {
 	background: rgba(255, 255, 255, 0.3);
-	border:2px solid white;
+	outline:solid 7px rgba(255, 255, 255, 0.5);
 }
 
 button:hover, button:focus {
 	background: rgba(255, 255, 255, 0.3);
-	border:2px solid white;
+	outline:solid 7px rgba(255, 255, 255, 0.5);
 }
 
 button{
