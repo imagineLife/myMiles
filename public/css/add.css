@@ -9,10 +9,15 @@ body{
 	padding:15px;
 }
 
+section{
+	width: 100%;
+	float: left;
+}
+
 .headerButton{
 	color: white;
     text-decoration: none;
-    float: left;
+    float: right;
     background-color: gray;
     padding: 10px;
     border-radius: 20px;

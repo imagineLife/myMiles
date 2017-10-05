@@ -1,5 +1,22 @@
+h2{
+  margin:5px;
+  position:absolute;
+}
+
+h2 > *{
+  text-decoration: none;
+  color:white;
+  font-size: 18px;
+  margin:5px 0 0 10px;
+
+}
+
 /*mid-size screens*/
 @media only screen  and (min-width : 600px) {
+
+  section{
+    width:75%;
+  }
 
   .textWrapper{
     display:inline;
