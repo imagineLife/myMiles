@@ -6,10 +6,25 @@ body{
 	background-color:black;
 	width: 100%;
 	margin:0px;
+	padding:15px;
+}
+
+.headerButton{
+	color: white;
+    text-decoration: none;
+    float: left;
+    background-color: gray;
+    padding: 10px;
+    border-radius: 20px;
+    height:50px;
+    line-height: 30px;
+    display: block;
 }
 
 form{
 	padding: 0px 15px 0px 15px;
+	display:inline-block;
+	width:100%;
 }
 
 form *{
