@@ -116,9 +116,14 @@ a:hover, a:focus {
 	outline:solid 7px rgba(255, 255, 255, 0.5);
 }
 
+.export:focus, .export:hover{
+	outline:none;
+}
+
 button:hover, button:focus {
 	background: rgba(255, 255, 255, 0.3);
 	border:2px solid white;
+	outline:solid 7px rgba(255, 255, 255, 0.5);
 }
 
 button{
