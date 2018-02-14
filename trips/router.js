@@ -78,9 +78,9 @@ router.post('/api/trips',
 });
 
 router.put('/api/trips/:id', (req, res) => {
-  if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+  if (!(req.params.id && req.body._id && req.params.id === req.body._id)) {
     res.status(400).json({
-      error: 'Request path id and request body id values must match'
+      error: `Request path id ${req.params.id} and request body id ${req.params.body} values must match`
     });
   }
 
