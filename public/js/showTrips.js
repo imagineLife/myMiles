@@ -19,8 +19,12 @@ function getResFromAPI() {
 }
 
 function updateAPI(type,data){
-	console.log('type is ',type);
-	console.log('data is ',data);
+	console.log('UpdateAPI type is ',type,' & data is ',data);
+	if(type=="update"){
+		console.log('will send as update');
+	}else{
+		console.log('will send as delete');
+	}
 }
 
 function generateTableHTML(data){
@@ -56,6 +60,8 @@ function generateTableHTML(data){
 
 //Selecting the Mile Number to edit
 $('.trip-table-body')
+
+//When selecting the distance, convert cell to an editable input
 	.on('click','span', function(e){
 
 		//close any input that is currently open
@@ -71,22 +77,34 @@ $('.trip-table-body')
 
 	})
 
-	.on('click','button.submitCheckbox', function(){
+//when selecting a button in the editing section
+	.on('click','button', function(){
 
 	//Pull data from table cell
 		let curTripID = $(this).siblings('input').data("id");
 		let inputVal = $(this).siblings('input').val();
 	//build data Object
 		let data = { milesTraveled : inputVal };
-		console.log('data is ->',data);
 
-	// $.post( '/editTrip/', {miles: $(this).siblings('input').val(), tripID:$(this).siblings('input').data("id"))  } 
+		switch( $(this).attr('class') ){
+
+			case "submitCheckbox":
+				updateAPI("update",data);
+				break;
+
+			case "deleteRow":
+				console.log('delete clicked');
+				updateAPI("delete",data);
+				break;
+
+			default :
+				closeInput();
+				break;
+			// $.post( '/editTrip/', {miles: $(this).siblings('input').val(), tripID:$(this).siblings('input').data("id"))  }
+		
+		}
+
 	})
-
-	.on('click','button.closeX', function(){
-		closeInput();
-	});
-
 		/*
 			add check-mark submit
 			add x-cancel
