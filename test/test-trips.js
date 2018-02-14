@@ -142,23 +142,6 @@ describe('Trips API resources page \n', () => {
 
   })
 
-	describe('POST endpoint', function() {
-		// strategy: make a POST request with data,
-		// then prove that the trip we get back has
-		// right keys, and that `id` is there (which means
-		// the data was inserted into db)
-		it('should view protected "add" page', function() {
-      const newTrip = generateTripData();
-
-      const test = chai.request(app)
-      .get('/add')
-      .then((res)=>{
-        res.unauthorized.should.equal(false);
-      });
-
-
-		});
-	});
 
 });
 
