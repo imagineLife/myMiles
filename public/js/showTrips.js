@@ -18,6 +18,11 @@ function getResFromAPI() {
     	});
 }
 
+function updateAPI(type,data){
+	console.log('type is ',type);
+	console.log('data is ',data);
+}
+
 function generateTableHTML(data){
 	let rowsHTML = '';
 	let totalMilesTraveled = 0;
@@ -36,7 +41,7 @@ function generateTableHTML(data){
 	            		${currentData.milesTraveled}
 	            	</span>
 	            	<button class="submitCheckbox">√</button>
-	            	<button class="cancelX">X</button>
+	            	<button class="closeX">X</button>
 	            </td>
 	          </tr>`
 	          );
@@ -77,7 +82,7 @@ $('.trip-table-body')
 	// $.post( '/editTrip/', {miles: $(this).siblings('input').val(), tripID:$(this).siblings('input').data("id"))  } 
 	})
 
-	.on('click','button.cancelX', function(){
+	.on('click','button.closeX', function(){
 		closeInput();
 	});
 
@@ -92,25 +97,15 @@ $('.trip-table-body')
 
 //converts an open input to a span
 function closeInput(){
-	$('input.mileValue')
-		.each(function(){
-			console.log('this is ',$(this));
+	$('input.mileValue').each(function(){
 
-		//pull original value out of element
+		//pull data value out of element
 			let origVal = $(this)[0].value;
 			let tData = $(this).closest('td');
 			let dataID = $(this).data('id');
-			console.log('data-id is ->',dataID);
 
-		//reset input back to span
-			// $(tData).html(
-			// 	$(tData).html().replace(/input/g,'span')
-			// )
-
-			$(this).replaceWith(`<span class='mileValue' name='mileValue' data-id=${dataID} value=${origVal}>`+origVal+`</span>`);
-		
 		//set span value back to value
-			// $(tData).find('span').text(origVal);
+			$(this).replaceWith(`<span class='mileValue' name='mileValue' data-id=${dataID} value=${origVal}>`+origVal+`</span>`);
 
 		})
 
