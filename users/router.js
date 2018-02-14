@@ -8,7 +8,7 @@ const router = express.Router();
 
 const jsonParser = bodyParser.json();
 
-// Post to register a new user
+// POST: register a new user
 router.post('/', jsonParser, (req, res) => {
   // ensure that uName & pWord are defined
   const requiredFields = ['username', 'password'];
@@ -153,6 +153,7 @@ router.post('/', jsonParser, (req, res) => {
 // we're just doing this so we have a quick way to see
 // if we're creating users. keep in mind, you can also
 // verify this in the Mongo shell.
+
 
 //*****
 //THIS WILL PASS TESTS
