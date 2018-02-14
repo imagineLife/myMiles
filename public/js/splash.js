@@ -12,7 +12,6 @@ $(function(){
 
 function redirect(user){
 	Cookies.set('authToken', user.authToken);
-	console.log(Cookies.get('authToken'));
 	window.location='/trips'
 }
 
