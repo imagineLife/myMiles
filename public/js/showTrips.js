@@ -41,6 +41,7 @@ function generateTableHTML(data){
 	            		${currentData.milesTraveled}
 	            	</span>
 	            	<button class="submitCheckbox">√</button>
+	            	<button class="deleteRow">Delete</button>
 	            	<button class="closeX">X</button>
 	            </td>
 	          </tr>`
