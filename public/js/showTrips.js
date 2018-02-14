@@ -1,4 +1,5 @@
 const getTripURI = `/api/trips/`;
+// const editTripURI = `/api/trips/:id`;
 
 function getResFromAPI() {
 	const infoSettings = {
@@ -47,26 +48,38 @@ function generateTableHTML(data){
 	displayTable($('.trip-table-body'), rowsHTML, $('.trip-table-total-miles'), totalMilesTraveled);
 }
 
-//editable mileage
+//Selecting the Mile Number to edit
 $('.trip-table-body')
 	.on('click','span', function(e){
 
-		//add the closeInput
+		//close any input that is currently open
 		closeInput();	
-		/*convert to input
-			traverse up a level to the table
-			convert span WORD to input
-		*/
 
-		//remove current string
+		//remove current content from html
 		$(this).html('');
 
-		//make input out of span
+		//convert input into span
 		$(this).closest('td').html(
 			$(this).closest('td').html().replace(/span/g,'input')
 		)
 
 	})
+
+	.on('click','button.submitCheckbox', function(){
+
+	//Pull data from table cell
+		let curTripID = $(this).siblings('input').data("id");
+		let inputVal = $(this).siblings('input').val();
+	//build data Object
+		let data = { milesTraveled : inputVal };
+		console.log('data is ->',data);
+
+	// $.post( '/editTrip/', {miles: $(this).siblings('input').val(), tripID:$(this).siblings('input').data("id"))  } 
+	})
+
+	.on('click','button.cancelX', function(){
+		closeInput();
+	});
 
 		/*
 			add check-mark submit
@@ -76,22 +89,28 @@ $('.trip-table-body')
 			disable multiple inputs @ same time 
 		*/
 
+
 //converts an open input to a span
 function closeInput(){
 	$('input.mileValue')
 		.each(function(){
+			console.log('this is ',$(this));
 
 		//pull original value out of element
 			let origVal = $(this)[0].value;
 			let tData = $(this).closest('td');
+			let dataID = $(this).data('id');
+			console.log('data-id is ->',dataID);
 
 		//reset input back to span
-			$(tData).html(
-				$(tData).html().replace(/input/g,'span')
-			)
+			// $(tData).html(
+			// 	$(tData).html().replace(/input/g,'span')
+			// )
+
+			$(this).replaceWith(`<span class='mileValue' name='mileValue' data-id=${dataID} value=${origVal}>`+origVal+`</span>`);
 		
 		//set span value back to value
-			$(tData).find('span').text(origVal);
+			// $(tData).find('span').text(origVal);
 
 		})
 
