@@ -3,6 +3,7 @@
   position:absolute;
   background-color: transparent;
   border:none;
+  text-decoration: none;
 }
 
 .home:hover{
