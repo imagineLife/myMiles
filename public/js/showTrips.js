@@ -129,12 +129,12 @@ function closeInput(){
 	$('input.mileValue').each(function(){
 
 		//pull data value out of element
-			let origVal = $(this)[0].value;
+			let attrs = $(this).attr("value");
 			let tData = $(this).closest('td');
 			let dataID = $(this).data('id');
 
 		//set span value back to value
-			$(this).replaceWith(`<span class='mileValue' name='mileValue' data-id=${dataID} value=${origVal}>`+origVal+`</span>`);
+			$(this).replaceWith(`<span class='mileValue' name='mileValue' data-id=${dataID} value=${attrs}>`+attrs+`</span>`);
 
 		})
 
