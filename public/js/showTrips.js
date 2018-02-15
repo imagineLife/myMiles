@@ -25,27 +25,32 @@ function updateAPI(type,data){
       url : editTripURI + data._id,
       dataType : 'json',
       contentType: 'application/json',
-      data: JSON.stringify(data)
+      data: JSON.stringify(data),
+	  success: function(){
+		window.location.href="/trips";
+	  }
     };
 
     //Updating a row
 	if(type=="update"){	
 		apiData.type = "PUT";
-		apiData.success = function(){
-			console.log('success goes here');
-			window.location.href="/trips";
-		};
-		console.log('update apiObj ->',apiData);
 
 		$.ajax(apiData)
     	.catch((err)=>{
     		console.log(err);
     		window.location.href="/trips";
     	});
+
 	//Deleting a row
 	}else{
-		console.log('delete apiObj ->',apiData);
-	}
+		apiData.type = "DELETE";
+
+		$.ajax(apiData)
+    	.catch((err)=>{
+    		console.log(err);
+    		window.location.href="/trips";
+    	});
+    }
 }
 
 function generateTableHTML(data){
@@ -113,7 +118,6 @@ $('.trip-table-body')
 				break;
 
 			case "deleteRow":
-				console.log('delete clicked');
 				updateAPI("delete",data);
 				break;
 
