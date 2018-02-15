@@ -3,40 +3,45 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/background.css">
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" type="text/css" href="css/respond.css">
     <title>TripTracker</title>
   </head>
   <body>
 
-    <h2><i>TrackMyTrip</i></h2>
+    <div id="darkener" class="darkener">
 
-    <form action="/api/auth/login" method="post" id="form" class="form">
+      <h2><i>TrackMyTrip</i></h2>
 
-      <h1>Login</h1>
-    
-      <label for="username">Username
-        <input type="string" name="username" id="username" placeholder="yourUsername" required>
-      </label>
-    
-      <label for="password">Password
-        <input type="password" name="password" id="password" placeholder="y0urP@$$werd" required>
-      </label>
+      <form action="/api/auth/login" method="post" id="form" class="form">
 
-        <div class="buttonBox">
+        <h1>Login</h1>
+      
+        <label for="username">Username
+          <input type="string" name="username" id="username" placeholder="yourUsername" required>
+        </label>
+      
+        <label for="password">Password
+          <input type="password" name="password" id="password" placeholder="y0urP@$$werd" required>
+        </label>
 
-        <button type="reset">
-            <img src="imgs/reset.png" alt="Reset Form">
-            <i class='reset'>Reset</i>
-        </button>
+          <div class="buttonBox">
 
-        <button type="submit" id="login" class="login">
-          <i class="fa fa-sign-out" aria-hidden="true"> Login</i>
-        </button>
+          <button type="reset">
+              <img src="imgs/reset.png" alt="Reset Form">
+              <i class='reset'>Reset</i>
+          </button>
 
-      </div>
-   
-    </form>
+          <button type="submit" id="login" class="login">
+            <i class="fa fa-sign-out" aria-hidden="true"> Login</i>
+          </button>
+
+        </div>
+     
+      </form>
+
+    </div>
 
     <script 
       src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js">
