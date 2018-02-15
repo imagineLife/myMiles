@@ -163,6 +163,7 @@ button label{
 td{
 	cursor: default;
 }
+
 .mileValue, button{
 	cursor: pointer;
 }

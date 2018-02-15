@@ -22,19 +22,29 @@ function updateAPI(type,data){
 	
 	//begin api data object build
 	const apiData = {  
-      dataType : 'json',
       url : editTripURI + data._id,
+      dataType : 'json',
+      contentType: 'application/json',
       data: JSON.stringify(data)
     };
 
     //Updating a row
 	if(type=="update"){	
-		console.log('will send as update');
-		console.log('apiObj ->',apiData);
-	
+		apiData.type = "PUT";
+		apiData.success = function(){
+			console.log('success goes here');
+			window.location.href="/trips";
+		};
+		console.log('update apiObj ->',apiData);
+
+		$.ajax(apiData)
+    	.catch((err)=>{
+    		console.log(err);
+    		window.location.href="/trips";
+    	});
 	//Deleting a row
 	}else{
-		console.log('will send as delete');
+		console.log('delete apiObj ->',apiData);
 	}
 }
 
