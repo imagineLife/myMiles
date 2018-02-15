@@ -160,6 +160,13 @@ button label{
 	font-size:15px;
 }
 
+td{
+	cursor: default;
+}
+.mileValue, button{
+	cursor: pointer;
+}
+
 td button{
 	display: none;
 }
