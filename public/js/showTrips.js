@@ -19,18 +19,17 @@ function getResFromAPI() {
 }
 
 function updateAPI(type,data){
-	console.log('UpdateAPI type is ',type,' & data is ',data);
 	
 	//begin api data object build
 	const apiData = {  
-      dataType: 'json',
+      dataType : 'json',
+      url : editTripURI + data._id,
+      data: JSON.stringify(data)
     };
 
     //Updating a row
 	if(type=="update"){	
 		console.log('will send as update');
-		apiData.url = editTripURI+data._id;
-		apiData.data = JSON.stringify(data);
 		console.log('apiObj ->',apiData);
 	
 	//Deleting a row
