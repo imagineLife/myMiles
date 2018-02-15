@@ -1,5 +1,5 @@
 const getTripURI = `/api/trips/`;
-// const editTripURI = `/api/trips/:id`;
+const editTripURI = `/api/trips/`;
 
 function getResFromAPI() {
 	const infoSettings = {
@@ -20,8 +20,20 @@ function getResFromAPI() {
 
 function updateAPI(type,data){
 	console.log('UpdateAPI type is ',type,' & data is ',data);
-	if(type=="update"){
+	
+	//begin api data object build
+	const apiData = {  
+      dataType: 'json',
+    };
+
+    //Updating a row
+	if(type=="update"){	
 		console.log('will send as update');
+		apiData.url = editTripURI+data._id;
+		apiData.data = JSON.stringify(data);
+		console.log('apiObj ->',apiData);
+	
+	//Deleting a row
 	}else{
 		console.log('will send as delete');
 	}
@@ -34,7 +46,6 @@ function generateTableHTML(data){
 
 	for(let i=0; i<data.length; i++){
 		const currentData = data[i];
-		// console.log('currentData ->',currentData);
 		let parsedDate = currentData.date.slice(0, 10);
 
 		const rowHTML = (
@@ -84,7 +95,7 @@ $('.trip-table-body')
 		let curTripID = $(this).siblings('input').data("id");
 		let inputVal = $(this).siblings('input').val();
 	//build data Object
-		let data = { milesTraveled : inputVal };
+		let data = { _id : curTripID,milesTraveled : inputVal };
 
 		switch( $(this).attr('class') ){
 
