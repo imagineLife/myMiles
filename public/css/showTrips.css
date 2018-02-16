@@ -153,8 +153,23 @@ button label{
 	font-size:15px;
 }
 
+.editButton{
+	background-color: gray;
+	border: none;
+	color: white;
+	font-size: 1.1em;
+	border-radius: 15px;
+    padding: 5px 15px;
+}
+
 td{
 	cursor: default;
+}
+
+input.mileValue{
+	width:80px;
+	font-size: 1.1em;
+	text-align: center;
 }
 
 .mileValue, button{
@@ -166,5 +181,5 @@ td button{
 }
 
 td input~button{
-	display:block;
+	display:inline;
 }
