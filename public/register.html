@@ -3,43 +3,48 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/background.css">
     <link rel="stylesheet" type="text/css" href="/css/register.css">
     <link rel="stylesheet" type="text/css" href="css/respond.css">
     <title>TripTracker</title>
   </head>
   <body>
 
-    <h2><i>TrackMyTrip</i></h2>
+    <div id="darkener" class="darkener">
 
-    <form action="#" id="form" class="form">
-    
-      <h1>Register</h1>
+      <h2><i>TrackMyTrip</i></h2>
 
-      <label for="username">Username
-        <input type="string" name="username" id="username" placeholder="yourUsername" required>
-      </label>
-    
-      <label for="password">Password
-        <input type="password" name="password" id="password" placeholder="s0methingAwe$0me" required>
-      </label>
+      <form action="#" id="form" class="form">
+      
+        <h1>Register</h1>
 
-      <label for="firstName">First
-        <input type="text" name="firstName" id="firstName" placeholder="Oscar" required>
-      </label>
-    
-      <label for="lastName">Last
-        <input type="text" name="lastName" id="lastName" placeholder="Myr" required>
-      </label>
+        <label for="username">Username
+          <input type="string" name="username" id="username" placeholder="yourUsername" required>
+        </label>
+      
+        <label for="password">Password
+          <input type="password" name="password" id="password" placeholder="s0methingAwe$0me" required>
+        </label>
 
-      <div class="buttonBox">
+        <label for="firstName">First
+          <input type="text" name="firstName" id="firstName" placeholder="Oscar" required>
+        </label>
+      
+        <label for="lastName">Last
+          <input type="text" name="lastName" id="lastName" placeholder="Myr" required>
+        </label>
 
-        <button type="reset">Reset</button>
+        <div class="buttonBox">
 
-        <button type="submit" id="register" class="register">Register</button>
+          <button type="reset">Reset</button>
 
-      </div>
-   
-    </form>
+          <button type="submit" id="register" class="register">Register</button>
+
+        </div>
+     
+      </form>
+
+    </div>
 
     <script 
       src="https://code.jquery.com/jquery-3.2.1.min.js"
