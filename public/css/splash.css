@@ -76,3 +76,7 @@ button{
 	font-size:20px;
 	line-height: 50px;
 }
+
+.demoButton{
+	cursor: pointer;
+}
