@@ -3,44 +3,49 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/background.css">
     <link rel="stylesheet" href="/css/add.css">
     <link rel="stylesheet" type="text/css" href="css/respond.css">
     <title>TripTracker</title>
   </head>
   <body>
 
-    <h2><i>TrackMyTrip</i></h2>
+    <div id="darkener" class="darkener">
+
+      <h2><i>TrackMyTrip</i></h2>
 
 
-    <section>
-      <a href="/trips" class="headerButton" onClick ="">View Trips</a>
-    </section>
+      <section>
+        <a href="/trips" class="headerButton" onClick ="">View Trips</a>
+      </section>
 
-    <form action="#" id="form" class="form">
-    
-      <h1>Add A Trip</h1>
+      <form action="#" id="form" class="form">
       
-      <label for="milesTraveled">Distance
-        <input type="number" name="milesTraveled" id="milesTraveled" step="1" min="0" max="50" placeholder="7">
-      </label>
-    
-      <label for="date">Date
-        <input type="text" name="date" id="date" placeholder="2017-08-21">
-      </label>
-
-      <div class="buttonBox">
-
-        <button type="reset">
-            <img src="imgs/reset.png" alt="Reset Form">
-            <i class='reset'>Reset Form</i>
-        </button>
-
-        <button type="submit" id="submit">Add Trip</button>
+        <h1>Add A Trip</h1>
+        
+        <label for="milesTraveled">Distance
+          <input type="number" name="milesTraveled" id="milesTraveled" step="1" min="0" max="50" placeholder="7">
+        </label>
       
-      </div>
+        <label for="date">Date
+          <input type="text" name="date" id="date" placeholder="2017-08-21">
+        </label>
 
-    </form>
+        <div class="buttonBox">
 
+          <button type="reset">
+              <img src="imgs/reset.png" alt="Reset Form">
+              <i class='reset'>Reset Form</i>
+          </button>
+
+          <button type="submit" id="submit">Add Trip</button>
+        
+        </div>
+
+      </form>
+
+    </div>
+    
     <script 
       src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js">
     </script>
