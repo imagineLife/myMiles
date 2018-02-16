@@ -9,6 +9,7 @@ body{
   -o-background-size: cover;
   background-size: cover;
   margin:0;
+  font-family: sans-serif;
 }
 
 .darkener{
@@ -19,4 +20,5 @@ body{
   height: 100%;
   position: absolute;
   z-index: 1;
+  padding: 20px;
 }
