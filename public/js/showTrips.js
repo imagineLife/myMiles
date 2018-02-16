@@ -69,7 +69,7 @@ function generateTableHTML(data){
 	            	<span class="mileValue" name="mileValue" data-id="${currentData._id}" value="${currentData.milesTraveled}">
 	            		${currentData.milesTraveled}
 	            	</span>
-	            	<button class="editButton submitCheckbox">√</button>
+	            	<button class="editButton submitCheckbox">&#10004;</button>
 	            	<button class="editButton deleteRow">Delete</button>
 	            	<button class="editButton closeX">X</button>
 	            </td>
