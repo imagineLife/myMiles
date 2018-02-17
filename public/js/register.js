@@ -1,5 +1,4 @@
 function tellMeItWorks(){
-	console.log('Worked!!');
 	window.location.href = '/login';
 }
 
@@ -38,6 +37,5 @@ $("#form")
 	    }
 	})
 
-	// console.log(objInputVal);
 	getResFromAPI(objInputVal);
 	})

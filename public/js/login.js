@@ -1,6 +1,5 @@
 function redirect(user){
 	Cookies.set('authToken', user.authToken);
-	console.log(Cookies.get('authToken'));
 	window.location='/trips'
 }
 
@@ -48,7 +47,6 @@ $("#form")
 
 $('#demoButton')
 	.on('click', (ev)=>{
-		console.log('clicked!');
 		$('#username').val('demoUser');
 		$('#password').val('DemoUserPassword');
 		$('#form').submit();

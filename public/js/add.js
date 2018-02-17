@@ -39,11 +39,7 @@ function parseFormInputs(){
 }
 
 function validateCorrectInputCount(inputVals){
-    if(Object.keys(inputVals).length == 2){
     	parseFormInputs();
-    }else{
-    	console.log('not enought inputs');
-    }
 }
 
 //Gathers form input values on Submit-Click
