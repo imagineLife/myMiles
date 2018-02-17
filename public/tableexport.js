@@ -206,7 +206,7 @@
              */
             xlsx: {
                 defaultClass: 'xlsx',
-                buttonContent: 'Excel xlsx',
+                buttonContent: 'xlsx',
                 mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                 fileExtension: '.xlsx'
             },
@@ -216,7 +216,7 @@
              */
             xls: {
                 defaultClass: 'xls',
-                buttonContent: 'Excel xls',
+                buttonContent: 'xls',
                 separator: '\t',
                 mimeType: 'application/vnd.ms-excel',
                 fileExtension: '.xls'
