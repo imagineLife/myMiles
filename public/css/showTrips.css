@@ -168,16 +168,17 @@ td{
 	cursor: default;
 }
 
+.mileValue, button{
+	cursor: pointer;
+}
+
 input.mileValue{
 	width:80px;
 	font-size: 1em;
 	text-align: center;
 	display: block;
     margin: 10px auto;
-}
-
-.mileValue, button{
-	cursor: pointer;
+    cursor: default;
 }
 
 .directions{
