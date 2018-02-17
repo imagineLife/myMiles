@@ -146,11 +146,24 @@ button label{
     background: rgba(255, 255, 255, 0.5);
     margin:5px;
 	height: 50px;
-	width:100px;
+	width:60px;
 	padding:10px;
 	border:none;
 	color:white;
 	font-size:15px;
+	border-radius: 20px;
+}
+
+.clearExports{
+	background: rgba(255, 255, 255, 0.5);
+    margin: 5px;
+    height: 50px;
+    width: 60px;
+    padding: 10px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    border-radius: 20px;
 }
 
 .editButton{
