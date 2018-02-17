@@ -110,8 +110,6 @@ $('.trip-table-body')
 //when selecting a button in the editing section
 	.on('click','button', function(){
 
-		console.log('class is ', $(this).attr('class'));
-
 	//Pull data from table cell
 		let curTripID = $(this).siblings('input').data("id");
 		let inputVal = $(this).siblings('input').val();
