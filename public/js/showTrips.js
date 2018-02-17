@@ -69,9 +69,9 @@ function generateTableHTML(data){
 	            	<span class="mileValue" name="mileValue" data-id="${currentData._id}" value="${currentData.milesTraveled}">
 	            		${currentData.milesTraveled}
 	            	</span>
-	            	<button class="editButton submitCheckbox">&#10004;</button>
-	            	<button class="editButton deleteRow">Delete</button>
-	            	<button class="editButton closeX">X</button>
+	            	<button class="submitCheckbox editButton">&#10004;</button>
+	            	<button class="deleteRow editButton">Delete</button>
+	            	<button class="closeX editButton">X</button>
 	            </td>
 	          </tr>`
 	          );
@@ -105,6 +105,8 @@ $('.trip-table-body')
 //when selecting a button in the editing section
 	.on('click','button', function(){
 
+		console.log('class is ', $(this).attr('class'));
+
 	//Pull data from table cell
 		let curTripID = $(this).siblings('input').data("id");
 		let inputVal = $(this).siblings('input').val();
@@ -113,15 +115,18 @@ $('.trip-table-body')
 
 		switch( $(this).attr('class') ){
 
-			case "submitCheckbox":
+			case "submitCheckbox editButton":
+			console.log('clicked submit');
 				updateAPI("update",data);
 				break;
 
-			case "deleteRow":
+			case "deleteRow editButton":
+			console.log('clicked delete');
 				updateAPI("delete",data);
 				break;
 
 			default :
+			console.log('clicked close');
 				closeInput();
 				break;
 			// $.post( '/editTrip/', {miles: $(this).siblings('input').val(), tripID:$(this).siblings('input').data("id"))  }
