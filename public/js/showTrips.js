@@ -18,6 +18,11 @@ function getResFromAPI() {
     	});
 }
 
+function showClearExport(){
+	let clearButton = `<button class="clearExports" onClick="$('.tableexport-caption').remove();">X</button>`
+	$( ".tableexport-caption" ).append( clearButton );
+}
+
 function updateAPI(type,data){
 	
 	//begin api data object build
