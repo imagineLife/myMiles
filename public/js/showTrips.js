@@ -116,17 +116,14 @@ $('.trip-table-body')
 		switch( $(this).attr('class') ){
 
 			case "submitCheckbox editButton":
-			console.log('clicked submit');
 				updateAPI("update",data);
 				break;
 
 			case "deleteRow editButton":
-			console.log('clicked delete');
 				updateAPI("delete",data);
 				break;
 
 			default :
-			console.log('clicked close');
 				closeInput();
 				break;
 			// $.post( '/editTrip/', {miles: $(this).siblings('input').val(), tripID:$(this).siblings('input').data("id"))  }
